@@ -46,6 +46,8 @@ function App() {
 
                     <Route path="/api/history" element={<HistoryPage />} />
 
+                    <Route path="/api/history" element={<HistoryPage />} />
+
                     <Route path="*" element={<h1>Page Not Found</h1>} />
                     </Route>
                 </Routes>
