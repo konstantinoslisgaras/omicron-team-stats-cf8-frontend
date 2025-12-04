@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import { API_URL } from "../../../config/api.ts";
 import type { PlayerStatsProps } from "../../../types/types.ts";
 import PlayerStatsCard from "../../PlayerStatsCard.tsx";
+import axiosClient from "../../../api/axiosClient.ts";
 
 const PlayerStatsPage =() => {
     const { playerId } = useParams<{ playerId: string }>();
@@ -12,8 +13,7 @@ const PlayerStatsPage =() => {
     useEffect(() => {
         const fetchStats = async () => {
             try {
-                const response = await fetch(`${API_URL}/statistics/players/${playerId}`);
-                const data = await response.json();
+                const { data } = await axiosClient.get(`${API_URL}/statistics/players/${playerId}`);
                 setPlayerStats(data);
                 document.title = `${data.name} Stats`;
             } catch (error) {

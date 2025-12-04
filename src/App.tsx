@@ -13,45 +13,50 @@ import CoachBiographyPage from "./components/pages/Coach/CoachBiographyPage.tsx"
 import CoachStatsPage from "./components/pages/Coach/CoachStatsPage.tsx";
 import TeamStatsPage from "./components/pages/Team/TeamStatsPage.tsx";
 import CompetitionPage from "./components/pages/Competitions/CompetitionsPage.tsx";
+import LoginPage from "./components/pages/User/LoginPage.tsx";
+import {AuthProvider} from "./context/AuthProvider.tsx";
+import RegisterPage from "./components/pages/User/RegisterPage.tsx";
 
 function App() {
     return (
         <>
-            <BrowserRouter>
-                <ScrollToHash />
-                <Routes>
-                    <Route element={<Layout />} >
-                    <Route path="/api/homepage" element={<HomePage />} />
+            <AuthProvider>
+                <BrowserRouter>
+                    <ScrollToHash />
+                    <Routes>
+                        <Route path="/api/register" element={<RegisterPage />} />
+                        <Route path="/api/login" element={<LoginPage />} />
+                        <Route element={<Layout />} >
+                        <Route path="/api/homepage" element={<HomePage />} />
 
-                    <Route path="/api/players">
-                        <Route path="fullteam" element={<FullTeamPage />} />
-                        <Route path=":playerId/:detailedBioId" element={<PlayerBiographyPage />} />
-                    </Route>
+                        <Route path="/api/players">
+                            <Route path="fullteam" element={<FullTeamPage />} />
+                            <Route path=":playerId/:detailedBioId" element={<PlayerBiographyPage />} />
+                        </Route>
 
-                    <Route path="/api/coach/:coachId/:detailedBioId" element={<CoachBiographyPage />} />
+                        <Route path="/api/coach/:coachId/:detailedBioId" element={<CoachBiographyPage />} />
 
-                    <Route path="/api/matches">
-                        <Route path="schedule" element={<MatchesBasicPage />} />
-                        <Route path="detailed" element={<MatchesDetailedPage />} />
-                        <Route path="detailed/:matchId" element={<PlayersMatchesPage />} />
-                    </Route>
+                        <Route path="/api/matches">
+                            <Route path="schedule" element={<MatchesBasicPage />} />
+                            <Route path="detailed" element={<MatchesDetailedPage />} />
+                            <Route path="detailed/:matchId" element={<PlayersMatchesPage />} />
+                        </Route>
 
-                    <Route path="/api/statistics">
-                        <Route path="team/:teamStatsId" element={<TeamStatsPage />} />
-                        <Route path="players/:playerId" element={<PlayerStatsPage />} />
-                        <Route path="coach/:coachId" element={<CoachStatsPage />} />
-                    </Route>
+                        <Route path="/api/statistics">
+                            <Route path="team/:teamStatsId" element={<TeamStatsPage />} />
+                            <Route path="players/:playerId" element={<PlayerStatsPage />} />
+                            <Route path="coach/:coachId" element={<CoachStatsPage />} />
+                        </Route>
 
-                    <Route path="/api/competitions" element={<CompetitionPage />} />
+                        <Route path="/api/competitions" element={<CompetitionPage />} />
 
-                    <Route path="/api/history" element={<HistoryPage />} />
+                        <Route path="/api/history" element={<HistoryPage />} />
 
-                    <Route path="/api/history" element={<HistoryPage />} />
-
-                    <Route path="*" element={<h1>Page Not Found</h1>} />
-                    </Route>
-                </Routes>
-            </BrowserRouter>
+                        <Route path="*" element={<h1>Page Not Found</h1>} />
+                        </Route>
+                    </Routes>
+                </BrowserRouter>
+            </AuthProvider>
         </>
     )
 }

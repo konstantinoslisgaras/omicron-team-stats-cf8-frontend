@@ -7,7 +7,7 @@ import {
     ChevronRight,
     Volleyball,
     TicketSlash,
-    TicketX
+    TicketX, Sigma
 } from 'lucide-react';
 import * as React from 'react';
 
@@ -16,6 +16,7 @@ interface PlayerStat {
     name: string;
     goals?: number;
     assists?: number;
+    goalsAssists?: number;
     yellowCards?: number;
     redCards?: number;
     wins?: number;
@@ -26,7 +27,7 @@ interface PlayerStat {
 interface StatLeaderCardProps {
     title: string;
     leaders?: PlayerStat[] | PlayerStat;
-    statKey: 'goals' | 'assists' | 'yellowCards' | 'redCards' | 'wins' | 'minutesPlayed' | 'matchesPlayed';
+    statKey: 'goals' | 'assists' | 'goalsAssists' | 'yellowCards' | 'redCards' | 'wins' | 'minutesPlayed' | 'matchesPlayed';
 }
 
 const StatLeadersCard: React.FC<StatLeaderCardProps> = ({ title, leaders, statKey }) => {
@@ -43,6 +44,7 @@ const StatLeadersCard: React.FC<StatLeaderCardProps> = ({ title, leaders, statKe
         switch (statKey) {
             case 'goals': return <Volleyball className="w-6 h-6 text-yellow-600" />;
             case 'assists': return <Footprints className="w-6 h-6 text-blue-500" />;
+            case 'goalsAssists': return <Sigma className="w-6 h-6 text-oly-red-dark" />;
             case 'wins': return <Trophy className="w-6 h-6 text-green-500" />;
             case 'minutesPlayed': return <Clock className="w-6 h-6 text-purple-500" />;
             case 'matchesPlayed': return <Calendar className="w-6 h-6 text-indigo-500" />;
@@ -56,6 +58,7 @@ const StatLeadersCard: React.FC<StatLeaderCardProps> = ({ title, leaders, statKe
         switch (statKey) {
             case 'goals': return 'goals';
             case 'assists': return 'assists';
+            case 'goalsAssists': return 'goals & assists';
             case 'wins': return 'wins';
             case 'minutesPlayed': return 'mins';
             case 'matchesPlayed': return 'matches';

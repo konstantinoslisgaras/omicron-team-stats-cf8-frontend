@@ -1,7 +1,13 @@
 import { Link } from "react-router";
 import logo from "../../assets/olympiacos-fc-stats-logo.png";
+import { LogoutButton } from "../LogoutButton.tsx";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext.ts";
 
 const Header =() => {
+    const auth = useContext(AuthContext);
+
+    if (!auth) return null; // optional safety check
     return (
         <>
             <header className="bg-oly-red-dark w-full fixed z-50 shadow-md">
@@ -45,6 +51,14 @@ const Header =() => {
                                 <Link to="/api/history">
                                     History
                                 </Link>
+                            </li>
+                            <li>
+                                <Link to="/api/profile">
+                                    Profile
+                                </Link>
+                            </li>
+                            <li>
+                                <LogoutButton />
                             </li>
                         </ul>
                     </nav>

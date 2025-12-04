@@ -1,3 +1,17 @@
+export type HomePageProps = {
+    previousMatch?: MatchBasicProps;
+    nextMatch?: MatchBasicProps;
+    statLeaders?: StatLeadersInfoProps;
+    competitionsStatus?: CompetitionProps[];
+    top5Scorers?: PlayerStat[];
+    top5Assists?: PlayerStat[];
+    top5MostWins?: PlayerStat[];
+    top5MinutesPlayedLeaders?: PlayerStat[];
+    top5MatchesPlayedLeaders?: PlayerStat[];
+    top5MostYellowCards?: PlayerStat[];
+    top5MostRedCards?: PlayerStat[];
+};
+
 export type PlayerProps =  {
     id: string;
     lastname: string;
@@ -50,6 +64,7 @@ export type PlayerStatsProps = {
     position: string;
     goals: number;
     assists: number;
+    goalsAssists: number;
     yellowCards: number;
     redCards: number;
     goalsConceded: number;
@@ -138,37 +153,6 @@ export type CompetitionProps = {
     participating: boolean;
 }
 
-export type PlayerMatchProps = {
-    id: string;
-    player: string;
-    goals: number;
-    assists: number;
-    yellowCards: number;
-    redCards: number;
-    goalsConceded: number;
-    minutesPlayed: number;
-}
-
-export type PlayerMatchFullProps = {
-    playerMatchId: string;
-    olympiacosName: string;
-    opponentName: string;
-    olympiacosGoals: number;
-    opponentGoals: number;
-    date: string;
-    time: string;
-    ground: string;
-    result: string;
-    matchNumber: number;
-    day: string;
-    competition: string;
-    description: string;
-    season: string;
-    coachName: string;
-    teamStatsDTO: TeamStatsProps;
-    playerMatches: PlayerMatchProps[];
-};
-
 export interface PlayerMatchesPitchCardProps {
     matchData: {
         id: string;
@@ -213,3 +197,20 @@ export interface PlayerMatchesPitchCardProps {
         coachName: string;
     };
 }
+
+export type RegisterFieldsProps = {
+    username: string;
+    password: string;
+    firstname: string;
+    lastname: string;
+    email: string;
+    dateOfBirth?: string;
+    favoritePlayer?: string;
+    genderType: string;
+};
+
+export type RegisterCardProps = {
+    onRegister: (data: RegisterFieldsProps) => Promise<void>;
+    loading: boolean;
+    error?: string;
+};

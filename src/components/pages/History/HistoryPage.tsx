@@ -1,18 +1,16 @@
 import {useEffect, useState} from "react";
 import type { HistoryProps } from "../../../types/types.ts";
-import { API_URL } from "../../../config/api.ts";
 import HistoryCard from "../../HistoryCard.tsx";
+import axiosClient from "../../../api/axiosClient.ts"; // ← ADD THIS IMPORT
 
 const HistoryPage = () => {
-
     const [info, setInfo] = useState<HistoryProps | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`${API_URL}/history`);
-                const data = await response.json();
+                const { data } = await axiosClient.get("/history");
                 setInfo(data);
             } catch (error) {
                 console.error("Failed to load Olympiacos info: ", error);

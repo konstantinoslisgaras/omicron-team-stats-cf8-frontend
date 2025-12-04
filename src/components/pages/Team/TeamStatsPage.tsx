@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import { API_URL } from "../../../config/api.ts";
 import type { TeamStatsProps } from "../../../types/types.ts";
 import TeamStatsCard from "../../TeamStatsCard.tsx";
+import axiosClient from "../../../api/axiosClient.ts";
 
 const TeamStatsPage =() => {
     const { teamStatsId } = useParams<{ teamStatsId: string }>();
@@ -12,8 +13,7 @@ const TeamStatsPage =() => {
     useEffect(() => {
         const fetchStats = async () => {
             try {
-                const response = await fetch(`${API_URL}/statistics/team/${teamStatsId}`);
-                const data = await response.json();
+                const { data } = await axiosClient.get(`${API_URL}/statistics/team/${teamStatsId}`);
                 setTeamStats(data);
                 document.title = `Olympiacos Stats`;
             } catch (error) {
@@ -34,7 +34,7 @@ const TeamStatsPage =() => {
 
     return(
         <>
-            <div className="container mx-auto">
+            <div className="container mx-auto mb-20">
                 <h1 className="text-2xl font-bold text-center text-oly-red-dark mb-8 mt-6">
                     Team Statistics
                 </h1>

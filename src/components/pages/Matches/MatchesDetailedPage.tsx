@@ -3,6 +3,7 @@ import type { MatchDetailedProps } from "../../../types/types.ts";
 import { API_URL } from "../../../config/api.ts";
 import MatchDetailedCard from "../../MatchDetailedCard.tsx";
 import {useScrollMemory} from "../../../hooks/useScrollMemory.ts";
+import axiosClient from "../../../api/axiosClient.ts";
 
 const MatchesDetailedPage =() => {
     const [matchesDetailed, setMatchesDetailed] = useState<MatchDetailedProps[]>([]);
@@ -18,9 +19,9 @@ const MatchesDetailedPage =() => {
     }, []);
 
     const fetchMatches = async () => {
-        const response = await fetch(`${API_URL}/matches/detailed`);
-        if (!response.ok) throw new Error("Error: Failed to load matches.");
-        return response.json();
+        const response = await axiosClient.get(`${API_URL}/matches/detailed`);
+        if (!response) throw new Error("Error: Failed to load matches.");
+        return response.data;
     };
 
     return (

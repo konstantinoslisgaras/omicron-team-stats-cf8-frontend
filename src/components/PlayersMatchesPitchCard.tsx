@@ -69,22 +69,22 @@ const PlayersMatchesPitchCard = ({ matchData }: Props) => {
         squad: {
             gk: { ...mapPlayer(startingXI[0]), offset: { x: -15, y: 0 } },
             df: [
-                { ...mapPlayer(startingXI[1]), offset: { x: 0, y: 0 } },
-                { ...mapPlayer(startingXI[2]), offset: { x: 0, y: 0 } },
-                { ...mapPlayer(startingXI[3]), offset: { x: 0, y: 0 } },
-                { ...mapPlayer(startingXI[4]), offset: { x: 0, y: 0 } }
+                { ...mapPlayer(startingXI[1]), offset: { x: -10, y: 0 } },
+                { ...mapPlayer(startingXI[2]), offset: { x: -20, y: 0 } },
+                { ...mapPlayer(startingXI[3]), offset: { x: -20, y: 0 } },
+                { ...mapPlayer(startingXI[4]), offset: { x: -10, y: 0 } }
             ],
             cdm: [
                 { ...mapPlayer(startingXI[5]), offset: { x: -5, y: -25 } },
-                { ...mapPlayer(startingXI[6]), offset: { x: 25, y: 25 } }
+                { ...mapPlayer(startingXI[6]), offset: { x: 35, y: 25 } }
             ],
             cam: [
-                { ...mapPlayer(startingXI[7]), offset: { x: 10, y: 10 } },
-                { ...mapPlayer(startingXI[8]), offset: { x: 35, y: 0 } },
-                { ...mapPlayer(startingXI[9]), offset: { x: 10, y: -10 } }
+                { ...mapPlayer(startingXI[7]), offset: { x: 65, y: 0 } },
+                { ...mapPlayer(startingXI[8]), offset: { x: 50, y: 0 } },
+                { ...mapPlayer(startingXI[9]), offset: { x: 65, y: 0 } }
             ],
             fw: [
-                { ...mapPlayer(startingXI[10]), offset: { x: 40, y: 0 } }
+                { ...mapPlayer(startingXI[10]), offset: { x: 85, y: 0 } }
             ],
         },
         style: {

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { API_URL } from "../../../config/api.ts";
 import type { CompetitionProps } from "../../../types/types.ts";
 import CompetitionCard from "../../CompetitionCard.tsx";
+import axiosClient from "../../../api/axiosClient.ts";
 
 const CompetitionPage = () => {
     const [competitions, setCompetitions] = useState<CompetitionProps[]>([]);
@@ -10,8 +11,7 @@ const CompetitionPage = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`${API_URL}/competitions`);
-                const data = await response.json();
+                const { data } = await axiosClient(`${API_URL}/competitions`);
                 setCompetitions(data);
             } catch (error) {
                 console.error("Failed to load competitions:", error);
@@ -27,9 +27,9 @@ const CompetitionPage = () => {
     if (!competitions.length) return <p className="text-center mt-10 text-gray-600">No competitions found.</p>;
 
     return (
-        <div className="container mx-auto mb-16">
+        <div className="container mx-auto mb-20">
             <h1 className="text-2xl font-bold text-center text-oly-red-dark mb-8 mt-6">
-                Team Statistics
+                Competitions
             </h1>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {competitions.map((competition) => (

@@ -3,6 +3,7 @@ import { API_URL } from "../../../config/api.ts";
 import type { PlayerProps, CoachProps } from "../../../types/types.ts";
 import PlayerCard from "../../PlayerCard.tsx";
 import CoachCard from "../../CoachCard.tsx";
+import axiosClient from "../../../api/axiosClient.ts";
 
 interface FullTeamData {
     players: PlayerProps[];
@@ -21,9 +22,9 @@ const FullTeamPage =() => {
     }, []);
 
     const fetchTeam = async () => {
-        const response = await fetch(`${API_URL}/players/fullteam`);
-        if (!response.ok) throw new Error("Error: Failed to load team.");
-        return response.json();
+        const response = await axiosClient.get(`${API_URL}/players/fullteam`);
+        if (!response) throw new Error("Error: Failed to load team.");
+        return response.data;
     };
 
     if (!team) return <p className="text-center mt-10">Loading...</p>;

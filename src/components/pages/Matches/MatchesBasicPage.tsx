@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { MatchBasicProps } from "../../../types/types.ts";
 import { API_URL } from "../../../config/api.ts";
 import MatchBasicCard from "../../MatchBasicCard.tsx";
+import axiosClient from "../../../api/axiosClient.ts";
 
 const MatchesBasicPage =() => {
     const [matchesBasic, setMatchesBasic] = useState<MatchBasicProps[]>([]);
@@ -15,9 +16,9 @@ const MatchesBasicPage =() => {
     }, []);
 
     const fetchMatches = async () => {
-        const response = await fetch(`${API_URL}/matches/schedule`);
-        if (!response.ok) throw new Error("Error: Failed to load matches.");
-        return response.json();
+        const response = await axiosClient.get(`${API_URL}/matches/schedule`);
+        if (!response) throw new Error("Error: Failed to load matches.");
+        return response.data;
     };
 
     return (

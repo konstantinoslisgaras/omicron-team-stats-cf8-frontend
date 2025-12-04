@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import { API_URL } from "../../../config/api.ts";
 import type { BiographyProps } from "../../../types/types.ts";
 import BiographyCard from "../../BiographyCard.tsx";
+import axiosClient from "../../../api/axiosClient.ts";
 
 const PlayerBiographyPage = () => {
     const { playerId } = useParams<{ playerId: string }>();
@@ -13,8 +14,7 @@ const PlayerBiographyPage = () => {
     useEffect(() => {
         const fetchBio = async () => {
             try {
-                const response = await fetch(`${API_URL}/players/${playerId}/${detailedBioId}`);
-                const data = await response.json();
+                const { data } = await axiosClient.get(`${API_URL}/players/${playerId}/${detailedBioId}`);
                 setBio(data);
                 document.title = `${data.fullname} | Biography`;
             } catch (error) {

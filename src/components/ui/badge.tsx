@@ -2,6 +2,7 @@ import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
 
+// @ts-expect-error
 import { cn } from "@/lib/utils"
 
 const badgeVariants = cva(
@@ -43,4 +44,5 @@ function Badge({
   )
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export { Badge, badgeVariants }

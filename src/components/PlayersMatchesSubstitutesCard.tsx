@@ -16,28 +16,25 @@ const PlayersMatchesSubstitutesCard = ({ substitutes }: SubstitutesRowProps) => 
 
             <div className="flex justify-center gap-1 min-w-max px-2">
                 {substitutes.map((p) => {
-                    // Build the stats string
                     const stats: string[] = [];
 
-                    // Minutes played first
+                    // Minutes played (styled stronger)
                     if (p.minutesPlayed > 0) {
-                        stats.push(`${p.minutesPlayed}'`);
+                        stats.push(`⏱️ ${p.minutesPlayed}'`);
                     }
 
-                    // Goals
                     if (p.goals > 0) {
                         stats.push(`⚽${p.goals > 1 ? `×${p.goals}` : ''}`);
                     }
 
-                    // Assists
                     if (p.assists > 0) {
                         stats.push(`👟${p.assists > 1 ? `×${p.assists}` : ''}`);
                     }
 
-                    // Yellow / Red cards
                     if (p.yellowCards > 0) {
                         stats.push(`🟨${p.yellowCards > 1 ? `×${p.yellowCards}` : ''}`);
                     }
+
                     if (p.redCards > 0) {
                         stats.push(`🟥`);
                     }
@@ -47,8 +44,12 @@ const PlayersMatchesSubstitutesCard = ({ substitutes }: SubstitutesRowProps) => 
                             key={p.id}
                             className="flex flex-col items-center justify-center bg-gray-50 border border-gray-200 rounded-lg shadow-xs py-2 px-3 min-w-[85px] hover:shadow-md transition-all"
                         >
-                            {/* Shirt number bubble */}
-                            <div className="w-7 h-7 bg-red-100 text-red-700 rounded-full flex items-center justify-center text-xs font-bold mb-1">
+                            {/* Number bubble improved */}
+                            <div
+                                className="w-8 h-8 rounded-full flex items-center justify-center
+                                           text-xs font-bold mb-1 shadow-sm
+                                           bg-[color:var(--color-oly-red)] text-white"
+                            >
                                 {p.shirtNumber}
                             </div>
 
@@ -57,10 +58,20 @@ const PlayersMatchesSubstitutesCard = ({ substitutes }: SubstitutesRowProps) => 
                                 {p.player}
                             </p>
 
-                            {/* Stats: minutes, goals, assists, cards */}
+                            {/* Stats */}
                             {stats.length > 0 && (
-                                <p className="text-[11px] text-gray-500 mt-[2px] text-center">
-                                    {stats.join(' ')}
+                                <p className="text-[11px] mt-[2px] text-center">
+                                    {/* minutes bolder & darker */}
+                                    <span className="font-semibold text-gray-700">
+                                        {stats[0]}
+                                    </span>
+
+                                    {/* rest of stats */}
+                                    {stats.slice(1).length > 0 && (
+                                        <span className="text-gray-500">
+                                            {' ' + stats.slice(1).join(' ')}
+                                        </span>
+                                    )}
                                 </p>
                             )}
                         </div>

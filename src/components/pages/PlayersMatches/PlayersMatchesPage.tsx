@@ -7,6 +7,7 @@ import PlayersMatchesSubstitutesCard from "../../PlayersMatchesSubstitutesCard.t
 import PlayersMatchesInfoCard from "../../PlayersMatchesInfoCard.tsx";
 import type { PlayerMatchesPitchCardProps } from "../../../types/types";
 import PlayersMatchesHeaderCard from "../../PlayersMatchesHeaderCard.tsx";
+import axiosClient from "../../../api/axiosClient.ts";
 
 const PlayersMatchesPage = () => {
     const { matchId } = useParams<{ matchId: string }>();
@@ -16,8 +17,7 @@ const PlayersMatchesPage = () => {
     useEffect(() => {
         const loadMatch = async () => {
             try {
-                const res = await fetch(`${API_URL}/matches/detailed/${matchId}`);
-                const data = await res.json();
+                const { data } = await axiosClient.get(`${API_URL}/matches/detailed/${matchId}`);
                 setMatchData(data);
                 document.title = `${data.olympiacosName} Match | Players`;
             } catch (err) {
