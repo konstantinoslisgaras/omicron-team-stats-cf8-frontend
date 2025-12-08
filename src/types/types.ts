@@ -198,6 +198,27 @@ export interface PlayerMatchesPitchCardProps {
     };
 }
 
+export type UserCardProps = {
+    firstname: string;
+    lastname: string;
+    email: string;
+    dateOfBirth?: string;
+    genderType?: string;
+    favoritePlayer?: string;
+}
+
+export type UserDTO = {
+    id: number;
+    username: string;
+    password?: string;
+    firstname: string;
+    lastname: string;
+    email: string;
+    dateOfBirth?: string;
+    favoritePlayer?: string;
+    genderType?: string;
+}
+
 export type RegisterFieldsProps = {
     username: string;
     password: string;

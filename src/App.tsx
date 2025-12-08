@@ -16,6 +16,8 @@ import CompetitionPage from "./components/pages/Competitions/CompetitionsPage.ts
 import LoginPage from "./components/pages/User/LoginPage.tsx";
 import {AuthProvider} from "./context/AuthProvider.tsx";
 import RegisterPage from "./components/pages/User/RegisterPage.tsx";
+import UserPage from "./components/pages/User/UserPage.tsx";
+import SuperAdminPage from "./components/pages/SuperAdmin/SuperAdminPage.tsx";
 
 function App() {
     return (
@@ -52,8 +54,12 @@ function App() {
 
                         <Route path="/api/history" element={<HistoryPage />} />
 
-                        <Route path="*" element={<h1>Page Not Found</h1>} />
-                        </Route>
+                        <Route path="/api/users/me" element={<UserPage />} />
+
+                        <Route path="/api/super-admin" element={<SuperAdminPage />} />
+                        <Route path="/api/users/profile/:username" element={<UserPage />} />
+
+                        <Route path="*" element={<h1>Page Not Found</h1>} /></Route>
                     </Routes>
                 </BrowserRouter>
             </AuthProvider>

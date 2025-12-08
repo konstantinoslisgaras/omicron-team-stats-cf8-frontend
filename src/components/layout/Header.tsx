@@ -53,8 +53,8 @@ const Header =() => {
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/api/profile">
-                                    Profile
+                                <Link to="/api/users/me">
+                                    {auth.user?.firstname}'s Profile
                                 </Link>
                             </li>
                             <li>
