@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import type { HistoryProps } from "../../../types/types.ts";
-import HistoryCard from "../../HistoryCard.tsx";
-import axiosClient from "../../../api/axiosClient.ts"; // ← ADD THIS IMPORT
+import HistoryCard from "../../cards/History/HistoryCard.tsx";
+import axiosClient from "../../../api/axiosClient.ts";
 
 const HistoryPage = () => {
     const [info, setInfo] = useState<HistoryProps | null>(null);

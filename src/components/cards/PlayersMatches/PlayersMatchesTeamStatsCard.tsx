@@ -1,5 +1,5 @@
 import { Footprints, TicketSlash, TicketX } from "lucide-react";
-import type { PlayerMatchesPitchCardProps } from "../types/types.ts";
+import type { PlayerMatchesPitchCardProps } from "../../../types/types.ts";
 import type {JSX} from "react";
 
 interface TeamStatsMiniRowProps {

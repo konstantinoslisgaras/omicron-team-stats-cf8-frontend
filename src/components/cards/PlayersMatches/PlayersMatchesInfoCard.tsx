@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Card, CardHeader, CardContent } from "./ui/card.tsx";
+import { Card, CardHeader, CardContent } from "../../ui/card.tsx";
 import {
     Calendar,
     Clock,

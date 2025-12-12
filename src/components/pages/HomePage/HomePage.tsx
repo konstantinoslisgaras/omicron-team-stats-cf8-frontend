@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import axiosClient from "../../../api/axiosClient.ts"; // our JWT-enabled axios
-import MatchBasicCard from "../../MatchBasicCard.tsx";
-import StatLeadersCard from "../../StatLeadersCard.tsx";
-import CountdownTimer from "../../CountdownTimer.tsx";
-import CompetitionsStatusCard from "../../CompetitionStatusCard.tsx";
+import MatchBasicCard from "../../cards/Matches/MatchBasicCard.tsx";
+import StatLeadersCard from "../../cards/HomePage/StatLeadersCard.tsx";
+import CountdownTimer from "../../cards/HomePage/CountdownTimer.tsx";
+import CompetitionsStatusCard from "../../cards/HomePage/CompetitionStatusCard.tsx";
 import type { HomePageProps } from "../../../types/types.ts";
+import CurrentStreak from "../../cards/HomePage/CurrentStreak.tsx";
 
 const HomePage = () => {
     const [info, setInfo] = useState<HomePageProps | null>(null);
@@ -31,16 +32,36 @@ const HomePage = () => {
     if (loading) return <p className="text-center mt-10 text-gray-600">Loading homepage...</p>;
     if (!info) return <p className="text-center mt-10 text-gray-600">No data available.</p>;
 
-    const goalsAssistsLeaders = (info.top5Scorers ?? [])
+    const combinedPlayers = [
+        ...(info.top5Scorers ?? []),
+        ...(info.top5Assists ?? [])
+    ];
+
+    const uniquePlayersMap = new Map<string, typeof combinedPlayers[0]>();
+
+    combinedPlayers.forEach(p => {
+        if (!uniquePlayersMap.has(p.playerId)) {
+            uniquePlayersMap.set(p.playerId, p);
+        } else {
+            const existing = uniquePlayersMap.get(p.playerId)!;
+            uniquePlayersMap.set(p.playerId, {
+                ...existing,
+                goals: existing.goals ?? 0,
+                assists: existing.assists ?? 0
+            });
+        }
+    });
+
+    const goalsAssistsLeaders = Array.from(uniquePlayersMap.values())
         .map(p => ({
             ...p,
-            goalsAssists: p.goals + p.assists
+            goalsAssists: (p.goals ?? 0) + (p.assists ?? 0)
         }))
         .sort((a, b) => b.goalsAssists - a.goalsAssists)
         .slice(0, 5);
 
     return (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12 mb-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12 mb-15">
             <h1 className="text-4xl font-extrabold text-oly-red-dark text-center tracking-tight">
                 Olympiacos FC Stats Dashboard
             </h1>
@@ -52,6 +73,7 @@ const HomePage = () => {
                             Latest Match
                         </span>
                         <MatchBasicCard match={info.previousMatch} />
+                        {info.currentStreak && <CurrentStreak currentStreak={info.currentStreak} />}
                     </div>
                 )}
 
@@ -69,7 +91,7 @@ const HomePage = () => {
             </div>
 
             <div className="bg-gray-50 py-8 px-6 rounded-3xl shadow-inner">
-                <h2 className="text-2xl font-bold text-gray-800 text-center mb-8">
+                <h2 className="text-2xl font-bold text-oly-red-dark text-center mb-8">
                     Stat Leaders
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-10 xl:gap-12">
@@ -99,6 +121,54 @@ const HomePage = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Fans */}
+            {info.top10Fans && info.top10Fans.length > 0 && (
+                <div className="bg-white py-10 px-6 rounded-3xl shadow">
+                    <h2 className="text-2xl font-bold text-oly-red-dark text-center mb-10">
+                        Top 10 Most Supported Players
+                    </h2>
+                    <div className="space-y-10">
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+                            {info.top10Fans.slice(0, 5).map((p, idx) => (
+                                <div
+                                    key={p.id}
+                                    className="flex flex-col items-center bg-gray-50 shadow-inner p-4 rounded-xl border border-gray-200"
+                                >
+                                    <span className="text-sm font-semibold text-oly-red-dark mb-2">
+                                        #{idx + 1}
+                                    </span>
+                                    <span className="text-lg font-bold text-gray-900 tracking-wide">
+                                        {p.name}
+                                    </span>
+                                    <span className="text-sm text-gray-700 font-medium mt-1">
+                                        Fans: {p.fans}
+                                    </span>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+                            {info.top10Fans.slice(5, 10).map((p, idx) => (
+                                <div
+                                    key={p.id}
+                                    className="flex flex-col items-center bg-gray-50 shadow-inner p-4 rounded-xl border border-gray-200"
+                                >
+                                    <span className="text-sm font-semibold text-oly-red-dark mb-2">
+                                        #{idx + 6}
+                                    </span>
+                                    <span className="text-lg font-bold text-gray-900 tracking-wide">
+                                        {p.name}
+                                    </span>
+                                    <span className="text-sm text-gray-700 font-medium mt-1">
+                                        Fans: {p.fans}
+                                    </span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

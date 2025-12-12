@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { API_URL } from "../../../config/api.ts";
 import type { CompetitionProps } from "../../../types/types.ts";
-import CompetitionCard from "../../CompetitionCard.tsx";
+import CompetitionCard from "../../cards/Competitions/CompetitionCard.tsx";
 import axiosClient from "../../../api/axiosClient.ts";
 
 const CompetitionPage = () => {
@@ -27,7 +27,7 @@ const CompetitionPage = () => {
     if (!competitions.length) return <p className="text-center mt-10 text-gray-600">No competitions found.</p>;
 
     return (
-        <div className="container mx-auto mb-20">
+        <div className="container mx-auto mb-25">
             <h1 className="text-2xl font-bold text-center text-oly-red-dark mb-8 mt-6">
                 Competitions
             </h1>

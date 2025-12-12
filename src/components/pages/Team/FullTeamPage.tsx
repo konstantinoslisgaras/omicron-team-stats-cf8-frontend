@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { API_URL } from "../../../config/api.ts";
 import type { PlayerProps, CoachProps } from "../../../types/types.ts";
-import PlayerCard from "../../PlayerCard.tsx";
-import CoachCard from "../../CoachCard.tsx";
+import PlayerCard from "../../cards/Players/PlayerCard.tsx";
+import CoachCard from "../../cards/Coach/CoachCard.tsx";
 import axiosClient from "../../../api/axiosClient.ts";
 
 interface FullTeamData {
@@ -38,9 +38,9 @@ const FullTeamPage =() => {
 
     return (
         <>
-            <div className="container mx-auto p-6">
+            <div className="container mx-auto p-6 mb-10">
                 <h1 className="text-2xl font-bold text-center text-oly-red-dark mb-8">
-                    Olympiacos Full Team
+                    Olympiacos FC Full Team
                 </h1>
                 {/* Players */}
                 {Object.entries(positionGroups).map(([genericPosition, players]) => (

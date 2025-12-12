@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import {ScrollToHash} from "./components/utils/ScrollToHash.tsx";
+import { ScrollToHash } from "./components/utils/ScrollToHash.tsx";
 import Layout from "./components/layout/Layout";
 import HomePage from "./components/pages/HomePage/HomePage.tsx";
 import FullTeamPage from "./components/pages/Team/FullTeamPage.tsx";
@@ -14,57 +14,78 @@ import CoachStatsPage from "./components/pages/Coach/CoachStatsPage.tsx";
 import TeamStatsPage from "./components/pages/Team/TeamStatsPage.tsx";
 import CompetitionPage from "./components/pages/Competitions/CompetitionsPage.tsx";
 import LoginPage from "./components/pages/User/LoginPage.tsx";
-import {AuthProvider} from "./context/AuthProvider.tsx";
 import RegisterPage from "./components/pages/User/RegisterPage.tsx";
 import UserPage from "./components/pages/User/UserPage.tsx";
 import SuperAdminPage from "./components/pages/SuperAdmin/SuperAdminPage.tsx";
+import RequireAuth from "./components/utils/RequireAuth.tsx";
+import { AuthProvider } from "./context/AuthProvider.tsx";
+import NotFoundPage from "./components/pages/ErrorPages/NotFoundPage.tsx";
+import ForbiddenPage from "./components/pages/ErrorPages/ForbiddenPage.tsx";
+import EditProfilePage from "./components/pages/User/EditProfilePage.tsx";
+
+const ProtectedLayout = () => (
+    <RequireAuth>
+        <Layout />
+    </RequireAuth>
+);
 
 function App() {
     return (
-        <>
-            <AuthProvider>
-                <BrowserRouter>
-                    <ScrollToHash />
-                    <Routes>
-                        <Route path="/api/register" element={<RegisterPage />} />
-                        <Route path="/api/login" element={<LoginPage />} />
-                        <Route element={<Layout />} >
-                        <Route path="/api/homepage" element={<HomePage />} />
+        <AuthProvider>
+            <BrowserRouter>
+                <ScrollToHash />
+                <Routes>
+                    {/* Public Routes */}
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/register" element={<RegisterPage />} />
 
-                        <Route path="/api/players">
+                    {/* Protected Routes */}
+                    <Route element={<ProtectedLayout />}>
+                        <Route index element={<HomePage />} /> {/* "/" */}
+                        <Route path="homepage" element={<HomePage />} />
+
+                        {/* Players */}
+                        <Route path="players">
                             <Route path="fullteam" element={<FullTeamPage />} />
                             <Route path=":playerId/:detailedBioId" element={<PlayerBiographyPage />} />
                         </Route>
 
-                        <Route path="/api/coach/:coachId/:detailedBioId" element={<CoachBiographyPage />} />
+                        {/* Coach */}
+                        <Route path="coach/:coachId/:detailedBioId" element={<CoachBiographyPage />} />
 
-                        <Route path="/api/matches">
+                        {/* Matches */}
+                        <Route path="matches">
                             <Route path="schedule" element={<MatchesBasicPage />} />
                             <Route path="detailed" element={<MatchesDetailedPage />} />
                             <Route path="detailed/:matchId" element={<PlayersMatchesPage />} />
                         </Route>
 
-                        <Route path="/api/statistics">
+                        {/* Statistics */}
+                        <Route path="statistics">
                             <Route path="team/:teamStatsId" element={<TeamStatsPage />} />
                             <Route path="players/:playerId" element={<PlayerStatsPage />} />
-                            <Route path="coach/:coachId" element={<CoachStatsPage />} />
+                            <Route path="coach/:coachStatsId" element={<CoachStatsPage />} />
                         </Route>
 
-                        <Route path="/api/competitions" element={<CompetitionPage />} />
+                        {/* Competitions & History */}
+                        <Route path="competitions" element={<CompetitionPage />} />
+                        <Route path="history" element={<HistoryPage />} />
 
-                        <Route path="/api/history" element={<HistoryPage />} />
+                        {/* User Pages */}
+                        <Route path="profile" element={<UserPage />} />
+                        <Route path="profile/edit" element={<EditProfilePage />} />
 
-                        <Route path="/api/users/me" element={<UserPage />} />
+                        {/* Admin */}
+                        <Route path="super-admin" element={<SuperAdminPage />} />
+                        <Route path="user/:username" element={<UserPage />} />
 
-                        <Route path="/api/super-admin" element={<SuperAdminPage />} />
-                        <Route path="/api/users/profile/:username" element={<UserPage />} />
-
-                        <Route path="*" element={<h1>Page Not Found</h1>} /></Route>
-                    </Routes>
-                </BrowserRouter>
-            </AuthProvider>
-        </>
-    )
+                        <Route path="/403" element={<ForbiddenPage />} />
+                        <Route path="*" element={<NotFoundPage />} />
+                    </Route>
+                </Routes>
+            </BrowserRouter>
+        </AuthProvider>
+    );
 }
 
-export default App
+export default App;

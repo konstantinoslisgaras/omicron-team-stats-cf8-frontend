@@ -9,7 +9,12 @@ export type AuthUser = {
     email: string;
     dateOfBirth?: string;
     genderType?: string;
-    favoritePlayer?: string;
+    favoriteLegend?: string;
+    supportedPlayerId: string;
+    supportedPlayerName: string;
+    role: "USER" | "SUPER_ADMIN";
+    active: boolean;
+    olympiacosFan: boolean;
 };
 
 type AuthContextProps = {

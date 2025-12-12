@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { API_URL } from "../../../config/api.ts";
 import type { TeamStatsProps } from "../../../types/types.ts";
-import TeamStatsCard from "../../TeamStatsCard.tsx";
+import TeamStatsCard from "../../cards/TeamStats/TeamStatsCard.tsx";
 import axiosClient from "../../../api/axiosClient.ts";
 
 const TeamStatsPage =() => {

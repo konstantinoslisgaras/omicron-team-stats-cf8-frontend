@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardContent } from './ui/card';
+import { Card, CardHeader, CardContent } from '../../ui/card.tsx';
 import {
     Trophy,
     Footprints,

@@ -1,6 +1,18 @@
-import type { PlayerStatsProps } from "../types/types.ts";
-import { Card, CardContent, CardHeader } from "./ui/card.tsx";
-import { ClipboardCheck, Clock, Footprints, Trophy, Scale, Shield, Volleyball, XCircle, TicketSlash, TicketX } from "lucide-react";
+import type { PlayerStatsProps } from "../../../types/types.ts";
+import { Card, CardContent, CardHeader } from "../../ui/card.tsx";
+import {
+    ClipboardCheck,
+    Clock,
+    Footprints,
+    Trophy,
+    Scale,
+    ShieldX,
+    Volleyball,
+    XCircle,
+    TicketSlash,
+    TicketX,
+    BrickWall
+} from "lucide-react";
 import type {JSX} from "react";
 
 interface PlayerStatsCardProps {
@@ -8,7 +20,7 @@ interface PlayerStatsCardProps {
 }
 
 const PlayerStatsCard = ({ stats }: PlayerStatsCardProps) => {
-    const { name, position, goals, assists, yellowCards, redCards, goalsConceded, minutesPlayed,
+    const { name, position, goals, assists, yellowCards, redCards, goalsConceded, cleanSheets, minutesPlayed,
     matchesPlayed, wins, draws, losses } = stats;
 
     const isGoalkeeper = position.includes("GOALKEEPER");
@@ -38,7 +50,8 @@ const PlayerStatsCard = ({ stats }: PlayerStatsCardProps) => {
                     {statBox(<Footprints className="w-5 h-5 text-oly-red-dark" />, "Assists", assists)}
                     {statBox(<TicketSlash className="w-5 h-5 text-yellow-500" />, "Yellow Cards", yellowCards)}
                     {statBox(<TicketX className="w-5 h-5 text-red-600" />, "Red Cards", redCards)}
-                    {isGoalkeeper && statBox(<Shield className="w-5 h-5 text-gray-700" />, "Goals Conceded", goalsConceded)}
+                    {isGoalkeeper && statBox(<ShieldX className="w-5 h-5 text-gray-700" />, "Goals Conceded", goalsConceded)}
+                    {isGoalkeeper && statBox(<BrickWall className="w-5 h-5 text-gray-700" />, "Clean Sheets", cleanSheets)}
                     {statBox(<Clock className="w-5 h-5 text-blue-600" />, "Minutes Played", minutesPlayed)}
                     {statBox(<ClipboardCheck className="w-5 h-5 text-green-600" />, "Matches Played", matchesPlayed)}
 

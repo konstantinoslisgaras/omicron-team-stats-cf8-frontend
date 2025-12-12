@@ -1,4 +1,4 @@
-import type { PlayerMatchesPitchCardProps } from "../types/types.ts";
+import type { PlayerMatchesPitchCardProps } from "../../../types/types.ts";
 
 interface SubstitutesRowProps {
     substitutes: PlayerMatchesPitchCardProps["matchData"]["playerMatches"];

@@ -1,5 +1,5 @@
-import type { LoginFields } from "../schemas/login.ts";
-import { API_URL } from "../config/api.ts";
+import type {LoginFields} from "../schemas/login.ts";
+import {API_URL} from "../config/api.ts";
 
 export type LoginResponse = {
     firstname: string;
@@ -26,7 +26,5 @@ export async function login({ username, password }: LoginFields): Promise<LoginR
         }
         throw new Error(detail);
     }
-    const data = await res.json();
-    localStorage.setItem("access_token", data.token);
-    return data;
+    return await res.json();
 }

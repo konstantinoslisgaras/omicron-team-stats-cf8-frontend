@@ -1,5 +1,5 @@
-import type { HistoryProps } from "../types/types.ts";
-import {Card, CardContent, CardHeader} from "./ui/card.tsx";
+import type { HistoryProps } from "../../../types/types.ts";
+import {Card, CardContent, CardHeader} from "../../ui/card.tsx";
 import { History, Trophy } from "lucide-react";
 
 interface HistoryCardProps {
@@ -11,7 +11,7 @@ const HistoryCard = ({ olympiacosHistory }: HistoryCardProps) => {
 
     return (
         <>
-            <Card className="w-full max-w-5xl bg-white shadow-md rounded-2xl border border-gray-200 mx-auto mb-16">
+            <Card className="w-full max-w-5xl bg-white shadow-md rounded-2xl border border-gray-200 mx-auto mb-20">
                 <CardHeader className="bg-oly-red-dark text-white rounded-t-2xl py-4 text-center">
                     <h2 className="text-3xl font-bold">{name}</h2>
                 </CardHeader>

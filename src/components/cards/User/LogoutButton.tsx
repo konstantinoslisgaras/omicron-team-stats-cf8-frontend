@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router";
-import { AuthContext} from "../context/AuthContext.ts";
+import { AuthContext} from "../../../context/AuthContext.ts";
 
 export function LogoutButton() {
     const auth = useContext(AuthContext);
@@ -10,13 +10,13 @@ export function LogoutButton() {
 
     const handleLogout = () => {
         auth.logoutUser();
-        navigate("/api/login"); // redirect to login page
+        navigate("/login"); // redirect to login page
     };
 
     return (
         <button
             onClick={handleLogout}
-            className="px-4 py-1 rounded hover:bg-gray-200 text-white hover:text-oly-red-dark transition"
+            className="text-white font-medium text-sm px-3 py-1 rounded-md bg-white/10 hover:bg-white/20 hover:cursor-pointer transition whitespace-nowrap"
         >
             Logout
         </button>

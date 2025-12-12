@@ -1,5 +1,5 @@
-import { Card, CardHeader, CardTitle, CardContent } from "./ui/card.tsx";
-import type { MatchDetailedProps } from "../types/types.ts";
+import { Card, CardHeader, CardTitle, CardContent } from "../../ui/card.tsx";
+import type { MatchDetailedProps } from "../../../types/types.ts";
 import {useNavigate} from "react-router";
 
 interface MatchDetailedCardProps {

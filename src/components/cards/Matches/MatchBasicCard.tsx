@@ -1,13 +1,20 @@
-import { Card, CardHeader, CardTitle, CardContent } from "./ui/card.tsx";
-import { Badge } from "./ui/badge.tsx";
-import type { MatchBasicProps } from "../types/types.ts";
+import { Card, CardHeader, CardTitle, CardContent } from "../../ui/card.tsx";
+import { Badge } from "../../ui/badge.tsx";
+import type { MatchBasicProps } from "../../../types/types.ts";
+import {useNavigate} from "react-router";
 
 interface MatchBasicCardProps {
     match: MatchBasicProps;
 }
 
 const MatchBasicCard =({ match }: MatchBasicCardProps) => {
-    const { olympiacosName, opponentName, olympiacosGoals, opponentGoals, date, time, ground, result } = match;
+    const navigate = useNavigate();
+    const { id, olympiacosName, opponentName, olympiacosGoals, opponentGoals, date, time, ground, result } = match;
+
+    const handleClick = () => {
+        if (!result) return; // do nothing for upcoming matches
+        navigate(`/matches/detailed/${id}`);
+    }
 
     let bgColor = "bg-gray-100";
     let variant = "outline";
@@ -40,7 +47,11 @@ const MatchBasicCard =({ match }: MatchBasicCardProps) => {
 
     return (
         <>
-            <Card className={`w-full max-w-sm border border-gray-300 bg-white/90 shadow-lg ${bgColor} hover:shadow-lg transition-shadow`}>
+            <Card
+                onClick={handleClick}
+                className={`w-full max-w-sm border border-gray-300 bg-white/90 shadow-lg 
+                ${bgColor} hover:cursor-pointer hover:shadow-lg transition-shadow
+                ${!result ? "opacity-80 hover:cursor-not-allowed hover:shadow-none" : ""}`}>
                 <CardHeader className="pb-2">
                     <CardTitle className="text-lg font-semibold text-center">
                         {title}

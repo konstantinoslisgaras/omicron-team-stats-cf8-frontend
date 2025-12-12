@@ -1,6 +1,6 @@
-import type { CoachStatsProps } from "../types/types.ts";
-import { Card, CardContent, CardHeader } from "./ui/card.tsx";
-import { Trophy, Scale, XCircle, Volleyball, Shield, ClipboardCheck } from "lucide-react";
+import type { CoachStatsProps } from "../../../types/types.ts";
+import { Card, CardContent, CardHeader } from "../../ui/card.tsx";
+import { Trophy, Scale, XCircle, Volleyball, ShieldX, ClipboardCheck } from "lucide-react";
 import type { JSX } from "react";
 
 interface CoachStatsCardProps {
@@ -31,7 +31,7 @@ const CoachStatsCard = ({ stats }: CoachStatsCardProps) => {
 
             <CardContent className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5 p-6">
                 {statBox(<Volleyball className="w-5 h-5 text-oly-red-dark" />, "Goals Scored", goals)}
-                {statBox(<Shield className="w-5 h-5 text-gray-700" />, "Goals Conceded", goalsConceded)}
+                {statBox(<ShieldX className="w-5 h-5 text-gray-700" />, "Goals Conceded", goalsConceded)}
                 {statBox(<ClipboardCheck className="w-5 h-5 text-green-600" />, "Matches Managed", matchesManaged)}
 
                 <div className="col-span-2 sm:col-span-3 md:col-span-4 flex flex-col items-center justify-center p-5 rounded-xl border border-gray-100 bg-white hover:bg-gray-50 shadow-sm hover:shadow-md transition-all">

@@ -53,9 +53,10 @@ const CountdownTimer = ({ eventDate }: { eventDate: string }) => {
             <div className="
                 bg-gradient-to-br from-oly-red-dark to-red-800
                 text-white rounded-lg shadow-md border border-red-700/50
-                px-3 py-2 min-w-[180px] h-[40px]
+                px-3 py-2.5 min-w-[180px] h-[40px]
                 flex items-center justify-center space-x-2
             ">
+                <span className="text-[10px] font-semibold tracking-wide text-red-100">TIME REMAINING&nbsp;&nbsp;</span>
                 {[{ n: day, label: "D" }, { n: hr, label: "H" }, { n: min, label: "M" }, { n: sec, label: "S" }].map((t, idx) => (
                     <div key={idx} className="flex items-center space-x-1">
                         <span className="text-sm font-bold tabular-nums">{pad(t.n)}</span>

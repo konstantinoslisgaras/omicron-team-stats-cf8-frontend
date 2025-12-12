@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import type { MatchBasicProps } from "../../../types/types.ts";
 import { API_URL } from "../../../config/api.ts";
-import MatchBasicCard from "../../MatchBasicCard.tsx";
+import MatchBasicCard from "../../cards/Matches/MatchBasicCard.tsx";
 import axiosClient from "../../../api/axiosClient.ts";
 
 const MatchesBasicPage =() => {
@@ -23,7 +23,7 @@ const MatchesBasicPage =() => {
 
     return (
         <>
-            <div className="container mx-auto p-6">
+            <div className="container mx-auto p-6 mb-10">
                 <h1 className="text-2xl font-bold text-center text-oly-red-dark mb-8">
                     Olympiacos Matches Program
                 </h1>

@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { API_URL } from "../../../config/api";
-import PlayersMatchesPitchCard from "../../PlayersMatchesPitchCard.tsx";
-import PlayersMatchesTeamStatsCard from "../../PlayersMatchesTeamStatsCard.tsx";
-import PlayersMatchesSubstitutesCard from "../../PlayersMatchesSubstitutesCard.tsx";
-import PlayersMatchesInfoCard from "../../PlayersMatchesInfoCard.tsx";
+import PlayersMatchesPitchCard from "../../cards/PlayersMatches/PlayersMatchesPitchCard.tsx";
+import PlayersMatchesTeamStatsCard from "../../cards/PlayersMatches/PlayersMatchesTeamStatsCard.tsx";
+import PlayersMatchesSubstitutesCard from "../../cards/PlayersMatches/PlayersMatchesSubstitutesCard.tsx";
+import PlayersMatchesInfoCard from "../../cards/PlayersMatches/PlayersMatchesInfoCard.tsx";
 import type { PlayerMatchesPitchCardProps } from "../../../types/types";
-import PlayersMatchesHeaderCard from "../../PlayersMatchesHeaderCard.tsx";
+import PlayersMatchesHeaderCard from "../../cards/PlayersMatches/PlayersMatchesHeaderCard.tsx";
 import axiosClient from "../../../api/axiosClient.ts";
 
 const PlayersMatchesPage = () => {

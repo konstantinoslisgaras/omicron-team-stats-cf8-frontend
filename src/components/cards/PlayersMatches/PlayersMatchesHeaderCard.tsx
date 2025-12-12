@@ -1,4 +1,4 @@
-import type { PlayerMatchesPitchCardProps } from "../types/types";
+import type { PlayerMatchesPitchCardProps } from "../../../types/types.ts";
 
 interface PlayersMatchesHeaderProps {
     matchData: PlayerMatchesPitchCardProps["matchData"];

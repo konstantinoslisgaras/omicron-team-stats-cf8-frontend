@@ -1,6 +1,6 @@
 import type { JSX } from "react";
-import type { BiographyProps } from "../types/types.ts";
-import { Card, CardHeader, CardContent } from "./ui/card";
+import type { BiographyProps } from "../../../types/types.ts";
+import { Card, CardHeader, CardContent } from "../../ui/card.tsx";
 import { BookOpenText, CalendarDays, FileClock, Globe, MapPinHouse, RulerDimensionLine } from "lucide-react";
 
 export interface BiographyCardProps {

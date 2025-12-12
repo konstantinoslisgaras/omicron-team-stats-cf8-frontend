@@ -46,7 +46,6 @@ const PlayersMatchesPitchCard = ({ matchData }: Props) => {
             stats.push(`🥅×${p.goalsConceded}`); // Goal net emoji
         }
 
-        // Add recycle icon if player was substituted AND doesn't have a red card
         const wasSubstituted = p.minutesPlayed < maxMinutes && p.redCards === 0;
         if (wasSubstituted) {
             stats.push(`⬇️`);

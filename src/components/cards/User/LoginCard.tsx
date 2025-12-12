@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { loginSchema } from "../schemas/login";
+import { loginSchema } from "../../../schemas/login.ts";
 
 type LoginCardProps = {
     onLogin: (values: { username: string; password: string }) => void;
@@ -26,8 +26,8 @@ const LoginCard: React.FC<LoginCardProps> = ({ onLogin, loading = false, error }
         <div className="w-full max-w-sm bg-white border border-gray-200 rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.25)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)] transition-all p-6 md:p-8 mx-auto">
             {/* Header */}
             <div className="text-center mb-6 md:mb-8">
-                <h1 className="text-2xl font-bold text-oly-red-dark">Welcome Back</h1>
-                <p className="text-sm md:text-base text-gray-500 mt-1 md:mt-2">Sign in to your account</p>
+                <h1 className="text-2xl font-bold text-oly-red-dark">Welcome Back, Legend</h1>
+                <p className="text-sm md:text-base text-gray-500 mt-1 md:mt-2">Track every goal, every victory, every moment of glory.</p>
             </div>
 
             {/* Form */}
@@ -51,7 +51,7 @@ const LoginCard: React.FC<LoginCardProps> = ({ onLogin, loading = false, error }
                 <button
                     type="submit"
                     disabled={loading}
-                    className="w-full bg-oly-red hover:bg-oly-red-dark active:scale-95 text-white py-3 rounded-lg font-semibold transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm md:text-base"
+                    className="w-full bg-oly-red hover:bg-oly-red-dark active:scale-95 text-white py-3 rounded-lg font-semibold transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm md:text-base hover:cursor-pointer"
                 >
                     {loading ? (
                         <span className="flex items-center justify-center gap-2">
@@ -64,7 +64,7 @@ const LoginCard: React.FC<LoginCardProps> = ({ onLogin, loading = false, error }
                 </button>
 
                 {/* Error Message BELOW the button */}
-                <div className="min-h-[1.5rem]"> {/* reserve space to prevent jumping */}
+                <div className="min-h-[1.5rem]">
                     {error && (
                         <p className="text-oly-red text-xs md:text-sm text-center mt-2">{error}</p>
                     )}
@@ -72,13 +72,13 @@ const LoginCard: React.FC<LoginCardProps> = ({ onLogin, loading = false, error }
 
                 <div className="text-center mt-6">
                     <p className="text-gray-600 text-sm mb-2">
-                        Don’t have an account?
+                        New to the platform?
                     </p>
                     <a
-                        href="/api/register"
+                        href="/register"
                         className="inline-block px-4 py-2 text-sm font-semibold text-oly-red border border-oly-red rounded-lg hover:bg-oly-red hover:text-white transition-all active:scale-95"
                     >
-                        Create Account
+                        Create an account
                     </a>
                 </div>
             </form>

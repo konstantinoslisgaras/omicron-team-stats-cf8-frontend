@@ -3,6 +3,7 @@ import { AuthContext } from "./AuthContext";
 import type { LoginFields } from "../schemas/login";
 import { login } from "../services/api.login";
 import type { UserDTO } from "../types/types.ts";
+import { API_URL } from "../config/api.ts";
 
 export function AuthProvider({ children }: { children: ReactNode }) {
     const [accessToken, setAccessToken] = useState<string | null>(null);
@@ -21,18 +22,23 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     const loginUser = async (fields: LoginFields) => {
         const res = await login(fields);
-
         const token = res.token;
         setAccessToken(token);
         localStorage.setItem("access_token", token);
 
-        const me: UserDTO = await fetch("http://localhost:8080/api/users/me", {
+        const profileRes = await fetch(`${API_URL}/profile`, {
             headers: {
                 Authorization: `Bearer ${token}`,
                 Accept: "application/json",
             },
-        }).then(r => r.json());
+        });
 
+        if (!profileRes.ok) {
+            logoutUser();
+            throw new Error("Failed to load user profile");
+        }
+
+        const me: UserDTO = await profileRes.json();
         setUser(me);
         localStorage.setItem("user", JSON.stringify(me));
     };
@@ -40,7 +46,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const logoutUser = () => {
         localStorage.removeItem("access_token");
         localStorage.removeItem("user");
-
         setAccessToken(null);
         setUser(null);
     };

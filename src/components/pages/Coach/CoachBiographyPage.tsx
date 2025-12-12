@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { API_URL } from "../../../config/api.ts";
 import type { BiographyProps } from "../../../types/types.ts";
-import BiographyCard from "../../BiographyCard.tsx";
+import BiographyCard from "../../cards/Biography/BiographyCard.tsx";
 import axiosClient from "../../../api/axiosClient.ts";
 
 const CoachBiographyPage = () => {

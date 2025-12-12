@@ -1,5 +1,5 @@
-import type { CompetitionProps } from "../types/types.ts";
-import { Card, CardContent, CardHeader } from "./ui/card.tsx";
+import type { CompetitionProps } from "../../../types/types.ts";
+import { Card, CardContent, CardHeader } from "../../ui/card.tsx";
 import { Info, Trophy } from "lucide-react";
 
 interface CompetitionCardProps {

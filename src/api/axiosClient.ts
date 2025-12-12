@@ -23,15 +23,25 @@ axiosClient.interceptors.response.use(
     (res) => res,
     (err) => {
         const url = err?.config?.url || "";
+
+        // Don't redirect for auth endpoints
         if (url.includes("/auth/")) {
             return Promise.reject(err);
         }
 
-        if (err?.response?.status === 401) {
-            console.error("401 Unauthorized! Token might be missing or invalid.", err.response.data);
-            localStorage.removeItem("access_token");
-            window.location.href = "/api/login";
+        const status = err?.response?.status;
+
+        if (status === 403) {
+            window.location.href = "/403";
+            return;
         }
+
+        if (status === 401) {
+            localStorage.removeItem("access_token");
+            window.location.href = "/login";
+            return;
+        }
+
         return Promise.reject(err);
     }
 );

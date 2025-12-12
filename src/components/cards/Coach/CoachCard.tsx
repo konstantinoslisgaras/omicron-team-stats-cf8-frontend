@@ -1,7 +1,7 @@
-import { Card, CardHeader, CardContent } from './ui/card';
-import type { CoachProps } from "../types/types.ts";
+import { Card, CardHeader, CardContent } from '../../ui/card.tsx';
+import type { CoachProps } from "../../../types/types.ts";
 import * as React from "react";
-import {Button} from "./ui/button.tsx";
+import {Button} from "../../ui/button.tsx";
 import {BarChart3, Book, Flag, PersonStanding, User} from "lucide-react";
 import {useNavigate} from "react-router";
 
@@ -14,11 +14,11 @@ const CoachCard: React.FC<CoachCardProps> = ({ coach }) => {
     const navigate = useNavigate();
 
     const handleBiography =() => {
-        navigate(`/api/coach/${id}/${id.replace("MG", "DB")}`);
+        navigate(`/coach/${id}/${id.replace("MG", "DB")}`);
     }
 
     const handleStatistics =() => {
-        navigate(`/api/statistics/coach/CS${id}`);
+        navigate(`/statistics/coach/CS${id}`);
     }
 
     return (

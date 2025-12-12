@@ -10,6 +10,8 @@ export type HomePageProps = {
     top5MatchesPlayedLeaders?: PlayerStat[];
     top5MostYellowCards?: PlayerStat[];
     top5MostRedCards?: PlayerStat[];
+    top10Fans?: TopFanPlayer[];
+    currentStreak?: Record<"WIN" | "LOSS" | "DRAW", number>;
 };
 
 export type PlayerProps =  {
@@ -19,11 +21,18 @@ export type PlayerProps =  {
     birthYear: number;
     nationality: string;
     shirtNumber: number;
+    fans: number;
     genericPosition: string;
     position: string;
     preferredFoot: string;
     captain: boolean;
 };
+
+export type TopFanPlayer = {
+    id: string;
+    name: string;
+    fans: number;
+}
 
 export type CoachProps =  {
     id: string;
@@ -40,7 +49,7 @@ export type BiographyProps =  {
     cityOfBirth: string;
     secondNationality: string;
     height: number;
-    previousTeam: string;
+    previousTeam: string
     biography: string;
 }
 
@@ -68,6 +77,7 @@ export type PlayerStatsProps = {
     yellowCards: number;
     redCards: number;
     goalsConceded: number;
+    cleanSheets: number;
     minutesPlayed: number;
     matchesPlayed: number;
     wins: number;
@@ -199,25 +209,46 @@ export interface PlayerMatchesPitchCardProps {
 }
 
 export type UserCardProps = {
+    id: number;
     firstname: string;
     lastname: string;
     email: string;
     dateOfBirth?: string;
     genderType?: string;
-    favoritePlayer?: string;
+    favoriteLegend?: string;
+    supportedPlayerName: string;
+    role: string;
+    active: boolean;
+    olympiacosFan: boolean;
+    memberSince: string;
 }
 
 export type UserDTO = {
+    password: string;
     id: number;
     username: string;
-    password?: string;
     firstname: string;
     lastname: string;
     email: string;
     dateOfBirth?: string;
-    favoritePlayer?: string;
+    supportedPlayerId: string;
+    supportedPlayerName: string;
+    favoriteLegend?: string;
     genderType?: string;
+    role: "USER" | "SUPER_ADMIN";
+    active: boolean;
+    olympiacosFan: boolean;
+    memberSince: string;
 }
+
+export type Paginated<T> = {
+    data: T[];
+    currentPage: number;
+    pageSize: number;
+    totalPages: number;
+    numberOfElements: number;
+    totalElements: number;
+};
 
 export type RegisterFieldsProps = {
     username: string;
@@ -226,8 +257,10 @@ export type RegisterFieldsProps = {
     lastname: string;
     email: string;
     dateOfBirth?: string;
-    favoritePlayer?: string;
+    supportedPlayerId: string;
+    favoriteLegend?: string;
     genderType: string;
+    olympiacosFan: boolean;
 };
 
 export type RegisterCardProps = {
