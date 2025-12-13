@@ -3,6 +3,7 @@ import logo from "../../assets/olympiacos-fc-stats-logo.png";
 import { LogoutButton } from "../cards/User/LogoutButton.tsx";
 import { useContext, useState, type ReactNode } from "react";
 import { AuthContext } from "../../context/AuthContext.ts";
+import {Menu, X} from "lucide-react";
 
 interface DropdownProps {
     label: string;
@@ -40,25 +41,22 @@ const Header = () => {
 
     const navItems = (
         <>
-            {/* === NO DROPDOWN — ORIGINAL STYLE KEPT === */}
             <li>
                 <Link to="/homepage" className="block px-4 py-2 hover:opacity-80" onClick={mobileMenuOpen ? handleMobileLinkClick : undefined}
                 >
-                    HomePage
+                    Home
                 </Link>
             </li>
 
-            {/* === NO DROPDOWN — ORIGINAL === */}
             <li>
                 <Link to="/statistics/team/TS20252026" onClick={mobileMenuOpen ? handleMobileLinkClick : undefined}
                       className="block px-4 py-2 hover:opacity-80">
-                    TeamStats
+                    Statistics
                 </Link>
             </li>
 
-            {/* === DROPDOWN: FULLTEAM === */}
             <li>
-                <Dropdown label="Team">
+                <Dropdown label="Squad">
                     <li>
                         <Link to="/players/fullteam" onClick={mobileMenuOpen ? handleMobileLinkClick : undefined} className="block px-4 py-2 hover:bg-white/10">
                             Players
@@ -72,12 +70,11 @@ const Header = () => {
                 </Dropdown>
             </li>
 
-            {/* === DROPDOWN: MATCHES === */}
             <li>
                 <Dropdown label="Matches">
                     <li>
                         <Link to="/matches/schedule" onClick={mobileMenuOpen ? handleMobileLinkClick : undefined} className="block px-4 py-2 hover:bg-white/10">
-                            Program
+                            Fixtures
                         </Link>
                     </li>
                     <li>
@@ -89,7 +86,7 @@ const Header = () => {
             </li>
 
             <li>
-                <Dropdown label="Information">
+                <Dropdown label="About">
                     <li>
                         <Link to="/competitions" onClick={mobileMenuOpen ? handleMobileLinkClick : undefined} className="block px-4 py-2 hover:bg-white/10">
                             Competitions
@@ -124,7 +121,6 @@ const Header = () => {
                 {/* Profile + Logout + Burger */}
                 <div className="flex items-center space-x-4">
 
-                    {/* Updated slightly – still matches your style */}
                     <Link
                         to="/profile"
                         className="
@@ -143,7 +139,7 @@ const Header = () => {
                         className="md:hidden text-white text-3xl ml-2"
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                     >
-                        {mobileMenuOpen ? "✕" : "☰"}
+                        {mobileMenuOpen ? <Menu /> : <X />}
                     </button>
                 </div>
             </div>

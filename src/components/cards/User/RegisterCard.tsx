@@ -186,7 +186,7 @@ const RegisterCard: React.FC<RegisterCardProps> = ({ onRegister, loading, error 
                 </div>
 
                 {/* Supported Player */}
-                <div className="mb-4 flex flex-col items-center p-4 border border-gray-200 rounded-xl shadow-sm bg-red-50">
+                <div className="sm:col-span-2 mb-4 flex flex-col items-center p-4 border border-gray-200 rounded-xl shadow-sm bg-red-50">
                     <label className="block text-sm font-medium text-gray-700 mb-2 text-center">Supported Player</label>
                     <select
                         name="supportedPlayerId"
@@ -205,7 +205,7 @@ const RegisterCard: React.FC<RegisterCardProps> = ({ onRegister, loading, error 
                                 setValidationErrors(prev => ({ ...prev, supportedPlayerId: "" }));
                             }
                         }}
-                        className={`border rounded-md p-3 w-64 text-center ${validationErrors.supportedPlayerId ? "border-red-500" : "border-gray-300"} focus:ring-2 focus:ring-oly-red focus:border-oly-red`}
+                        className={`border rounded-md p-3 w-full text-center ${validationErrors.supportedPlayerId ? "border-red-500" : "border-gray-300"} focus:ring-2 focus:ring-oly-red focus:border-oly-red`}
                     >
                         <option value="">Select Supported Player</option>
                         {players.map(p => (

@@ -98,7 +98,7 @@ const UserCard = ({
                                         <User className="w-4 h-4 text-gray-600" />
                                     </div>
                                     <div>
-                                        <p className="text-sm text-gray-500">ID</p>
+                                        <p className="text-sm text-gray-500">User ID</p>
                                         <p className="font-medium text-gray-800">{id}</p>
                                     </div>
                                 </div>
