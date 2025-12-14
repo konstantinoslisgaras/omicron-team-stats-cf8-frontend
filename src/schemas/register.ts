@@ -42,14 +42,13 @@ export const registerSchema = z.object({
         .max(100, { message: "Email cannot exceed 100 characters." }),
 
     dateOfBirth: z
-        .preprocess(
-        (val) => val === "" ? undefined : val,
-        z.string()
-            .refine((val) => {
-                const dob = new Date(val);
-                return dob >= minDate && dob <= today;
-            }, { message: "Date of birth must be within the last 120 years and not in the future." })
-            .optional()),
+        .string()
+        .optional()
+        .refine((val) => {
+            if (!val) return true; // allow empty values
+            const date = new Date(val);
+            return date >= minDate && date <= today;
+        }, "Date of birth must be in the past and within the last 120 years"),
 
     genderType: z
         .enum(["PREFER_NOT_TO_DISCLOSE", "MALE", "FEMALE", "OTHER"], {
