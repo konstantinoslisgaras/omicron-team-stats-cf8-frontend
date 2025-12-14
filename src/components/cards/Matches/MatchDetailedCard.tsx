@@ -1,6 +1,6 @@
 import { Card, CardHeader, CardTitle, CardContent } from "../../ui/card.tsx";
 import type { MatchDetailedProps } from "../../../types/types.ts";
-import {useNavigate} from "react-router";
+import { useNavigate } from "react-router";
 
 interface MatchDetailedCardProps {
     match: MatchDetailedProps;
@@ -26,7 +26,6 @@ const MatchDetailedCard =({ match }: MatchDetailedCardProps) => {
         case "Greek Football Cup": bgColor = "bg-pink-200"; break;
     }
 
-    // Badge color based on outcome
     let variant = "outline";
     switch (result) {
         case "WIN": variant = "bg-green-400 text-white"; break;
@@ -34,7 +33,6 @@ const MatchDetailedCard =({ match }: MatchDetailedCardProps) => {
         case "LOSS": variant = "bg-red-400 text-white"; break;
     }
 
-    // HOME / AWAY title
     const title =
         ground === "HOME" ? (
             <>

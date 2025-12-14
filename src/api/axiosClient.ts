@@ -24,7 +24,6 @@ axiosClient.interceptors.response.use(
     (err) => {
         const url = err?.config?.url || "";
 
-        // Don't redirect for auth endpoints
         if (url.includes("/auth/")) {
             return Promise.reject(err);
         }

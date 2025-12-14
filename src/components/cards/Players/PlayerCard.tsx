@@ -1,6 +1,6 @@
 import { Card, CardHeader, CardContent } from '../../ui/card.tsx';
 import type { PlayerProps } from "../../../types/types.ts";
-import {Crown, Flag, PersonStanding, Calendar, BarChart3, Book, LandPlot} from "lucide-react";
+import { Crown, Flag, PersonStanding, Calendar, BarChart3, Book, LandPlot } from "lucide-react";
 import * as React from "react";
 import { Button } from "../../ui/button.tsx";
 import {useNavigate} from "react-router";

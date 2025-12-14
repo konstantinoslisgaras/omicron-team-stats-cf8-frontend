@@ -1,18 +1,6 @@
 import type { PlayerStatsProps } from "../../../types/types.ts";
 import { Card, CardContent, CardHeader } from "../../ui/card.tsx";
-import {
-    ClipboardCheck,
-    Clock,
-    Footprints,
-    Trophy,
-    Scale,
-    ShieldX,
-    Volleyball,
-    XCircle,
-    TicketSlash,
-    TicketX,
-    BrickWall
-} from "lucide-react";
+import { ClipboardCheck, Clock, Footprints, Trophy, Scale, ShieldX, Volleyball, XCircle, TicketSlash, TicketX, BrickWall } from "lucide-react";
 import type {JSX} from "react";
 
 interface PlayerStatsCardProps {

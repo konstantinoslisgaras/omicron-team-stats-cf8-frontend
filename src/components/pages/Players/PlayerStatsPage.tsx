@@ -24,7 +24,6 @@ const PlayerStatsPage =() => {
         };
 
         if (playerId) {
-            // noinspection JSIgnoredPromiseFromCall
             fetchStats();
         }
     }, [playerId]);

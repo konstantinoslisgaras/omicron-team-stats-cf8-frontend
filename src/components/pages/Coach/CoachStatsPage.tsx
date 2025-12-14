@@ -24,7 +24,6 @@ const CoachStatsPage =() => {
         };
 
         if (coachStatsId) {
-            // noinspection JSIgnoredPromiseFromCall
             fetchStats();
         }
     }, [coachStatsId]);

@@ -5,7 +5,6 @@ import { API_URL } from "../../../config/api";
 import { type UpdateProfileFields, updateProfileSchema } from "../../../schemas/updateProfile.ts";
 import type { UserDTO } from "../../../types/types";
 
-// Player type returned from API
 interface SupportedPlayer {
     id: string;
     name: string;
@@ -31,7 +30,6 @@ const EditProfilePage: React.FC = () => {
     const [errors, setErrors] = useState<Partial<Record<keyof UpdateProfileFields | "password", string>>>({});
     const [serverError, setServerError] = useState<string>("");
 
-    // Fetch profile and player list
     useEffect(() => {
         const fetchProfile = async () => {
             try {
@@ -83,7 +81,6 @@ const EditProfilePage: React.FC = () => {
         e.preventDefault();
         setServerError("");
 
-        // Exclude empty password from validation
         const dataToValidate = { ...form };
         if (!dataToValidate.password) delete dataToValidate.password;
 

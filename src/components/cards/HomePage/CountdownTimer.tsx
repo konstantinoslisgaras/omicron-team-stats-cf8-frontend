@@ -16,7 +16,7 @@ const CountdownTimer = ({ eventDate }: { eventDate: string }) => {
             setRemaining(diff > 0 ? diff : 0);
         };
 
-        update(); // 👉 run immediately so no bulge / no flashing message
+        update();
         const interval = setInterval(update, 1000);
         return () => clearInterval(interval);
     }, [eventTimestamp]);

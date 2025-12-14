@@ -23,7 +23,6 @@ interface Props {
 const PlayersMatchesPitchCard = ({ matchData }: Props) => {
     const startingXI = matchData.playerMatches.slice(0, 11);
 
-    // Find max minutes in the starting XI (usually 90 or 120 for extra time)
     const maxMinutes = Math.max(...startingXI.map(p => p.minutesPlayed));
 
     const mapPlayer = (p: PlayerMatch): Player => {
@@ -41,7 +40,6 @@ const PlayersMatchesPitchCard = ({ matchData }: Props) => {
         if (p.redCards > 0) {
             stats.push(`🟥`);
         }
-
         if (p.goalsConceded > 0) {
             stats.push(`🥅×${p.goalsConceded}`); // Goal net emoji
         }
@@ -97,12 +95,9 @@ const PlayersMatchesPitchCard = ({ matchData }: Props) => {
 
     return (
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-2">
-            {/* Header */}
             <h2 className="text-base font-semibold text-center uppercase tracking-wide mb-4 pb-2 border-b border-gray-200 text-[color:var(--color-oly-red)]">
                 Starting XI
             </h2>
-
-            {/* Pitch */}
             <div className="w-full max-w-4xl mx-auto flex justify-center">
                 <SoccerLineUp
                     color="#3A7D44"

@@ -3,7 +3,7 @@ import { useLocation, useNavigationType } from "react-router-dom";
 
 export function useScrollMemory() {
     const location = useLocation();
-    const navType = useNavigationType(); // POP = back/
+    const navType = useNavigationType();
 
     useEffect(() => {
         if (navType !== "POP") {
@@ -16,9 +16,8 @@ export function useScrollMemory() {
 
         const { x, y } = JSON.parse(saved);
 
-        // keep trying until content height is large enough
         let tries = 0;
-        const maxTries = 50; // 50 × 50ms = 2.5 seconds max
+        const maxTries = 50;
 
         const restore = () => {
             if (document.body.scrollHeight >= y || tries >= maxTries) {

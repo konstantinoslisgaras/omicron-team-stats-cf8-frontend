@@ -24,6 +24,7 @@ const LoginCard: React.FC<LoginCardProps> = ({ onLogin, loading = false, error }
 
     return (
         <div className="w-full max-w-sm bg-white border border-gray-200 rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.25)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)] transition-all p-6 md:p-8 mx-auto">
+
             {/* Header */}
             <div className="text-center mb-6 md:mb-8">
                 <h1 className="text-2xl font-bold text-oly-red-dark">Welcome Back, Legend</h1>
@@ -63,7 +64,7 @@ const LoginCard: React.FC<LoginCardProps> = ({ onLogin, loading = false, error }
                     )}
                 </button>
 
-                {/* Error Message BELOW the button */}
+                {/* Error Message */}
                 <div className="min-h-[1.5rem]">
                     {error && (
                         <p className="text-oly-red text-xs md:text-sm text-center mt-2">{error}</p>

@@ -133,6 +133,7 @@ const SuperAdminPage = () => {
                 {searchError && <p className="text-red-500 text-sm mt-2 text-center">{searchError}</p>}
             </div>
 
+            {/* User List */}
             {paginatedUsers && (
                 <div className="mt-6">
                     <h2 className="text-xl font-medium text-center mb-2">User List</h2>

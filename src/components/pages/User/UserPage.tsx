@@ -46,6 +46,7 @@ const UserPage: React.FC = () => {
 
     return (
         <div className="max-w-4xl mb-20 mx-auto p-6 space-y-6">
+
             {/* Admin Dashboard button */}
             {auth.user?.role === "SUPER_ADMIN" && (
                 <div className="flex justify-center">
@@ -73,6 +74,8 @@ const UserPage: React.FC = () => {
                 olympiacosFan={user.olympiacosFan}
                 memberSince={user.memberSince}
             />
+
+            {/* User Edit button */}
             {auth.user?.username === user.username && (
                 <div className="flex justify-center mb-10">
                     <button

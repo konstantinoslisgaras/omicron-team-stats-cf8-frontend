@@ -14,7 +14,6 @@ const puns = [
 ];
 
 const NotFound = () => {
-    // Pick a random pun once per render
     const pun = useMemo(() => puns[Math.floor(Math.random() * puns.length)], []);
 
     return (

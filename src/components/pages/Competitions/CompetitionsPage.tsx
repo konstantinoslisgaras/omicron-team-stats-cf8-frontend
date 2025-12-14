@@ -3,7 +3,7 @@ import { API_URL } from "../../../config/api.ts";
 import type { CompetitionProps } from "../../../types/types.ts";
 import CompetitionCard from "../../cards/Competitions/CompetitionCard.tsx";
 import axiosClient from "../../../api/axiosClient.ts";
-import {useScrollMemory} from "../../../hooks/useScrollMemory.ts";
+import { useScrollMemory } from "../../../hooks/useScrollMemory.ts";
 
 const CompetitionPage = () => {
     const [competitions, setCompetitions] = useState<CompetitionProps[]>([]);
@@ -22,7 +22,6 @@ const CompetitionPage = () => {
                 setLoading(false);
             }
         };
-        // noinspection JSIgnoredPromiseFromCall
         fetchData();
     }, []);
 

@@ -6,11 +6,11 @@ export function LogoutButton() {
     const auth = useContext(AuthContext);
     const navigate = useNavigate();
 
-    if (!auth) return null; // safety check
+    if (!auth) return null;
 
     const handleLogout = () => {
         auth.logoutUser();
-        navigate("/login"); // redirect to login page
+        navigate("/login");
     };
 
     return (

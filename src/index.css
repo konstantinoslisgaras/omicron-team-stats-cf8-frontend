@@ -141,13 +141,13 @@
 }
 
 .player-goal::before {
-    content: "⚽";  /* or use a small image */
+    content: "⚽";
     position: absolute;
-    top: -12px;     /* above the circle */
+    top: -12px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 0.9rem;
-    color: #FFD000; /* golden icon */
+    color: #FFD000;
     pointer-events: none;
 }
 

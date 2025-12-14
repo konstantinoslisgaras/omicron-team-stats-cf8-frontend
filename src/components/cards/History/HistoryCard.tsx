@@ -1,5 +1,5 @@
 import type { HistoryProps } from "../../../types/types.ts";
-import {Card, CardContent, CardHeader} from "../../ui/card.tsx";
+import { Card, CardContent, CardHeader } from "../../ui/card.tsx";
 import { History, Trophy } from "lucide-react";
 
 interface HistoryCardProps {

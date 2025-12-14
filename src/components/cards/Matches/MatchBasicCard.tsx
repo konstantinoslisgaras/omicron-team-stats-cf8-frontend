@@ -1,7 +1,7 @@
 import { Card, CardHeader, CardTitle, CardContent } from "../../ui/card.tsx";
 import { Badge } from "../../ui/badge.tsx";
 import type { MatchBasicProps } from "../../../types/types.ts";
-import {useNavigate} from "react-router";
+import { useNavigate } from "react-router";
 
 interface MatchBasicCardProps {
     match: MatchBasicProps;

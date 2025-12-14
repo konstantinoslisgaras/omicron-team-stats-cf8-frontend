@@ -35,6 +35,7 @@ function App() {
             <BrowserRouter>
                 <ScrollToHash />
                 <Routes>
+
                     {/* Public Routes */}
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/register" element={<RegisterPage />} />
@@ -67,11 +68,13 @@ function App() {
                             <Route path="coach/:coachStatsId" element={<CoachStatsPage />} />
                         </Route>
 
-                        {/* Competitions & History */}
+                        {/* Competitions */}
                         <Route path="competitions" element={<CompetitionPage />} />
+
+                        {/* History */}
                         <Route path="history" element={<HistoryPage />} />
 
-                        {/* User Pages */}
+                        {/* User */}
                         <Route path="profile" element={<UserPage />} />
                         <Route path="profile/edit" element={<EditProfilePage />} />
 
@@ -79,8 +82,10 @@ function App() {
                         <Route path="super-admin" element={<SuperAdminPage />} />
                         <Route path="user/:username" element={<UserPage />} />
 
+                        {/* Errors */}
                         <Route path="/403" element={<ForbiddenPage />} />
                         <Route path="*" element={<NotFoundPage />} />
+
                     </Route>
                 </Routes>
             </BrowserRouter>

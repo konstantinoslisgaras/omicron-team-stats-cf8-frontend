@@ -14,7 +14,6 @@ interface DropdownProps {
 const Dropdown = ({ label, children, mobile }: DropdownProps) => {
     const [open, setOpen] = useState(false);
 
-    // Only toggle on mobile, desktop still uses hover
     const toggle = () => {
         if (mobile) setOpen((prev) => !prev);
     };
@@ -28,7 +27,6 @@ const Dropdown = ({ label, children, mobile }: DropdownProps) => {
                 {label}
                 <span className="text-xs opacity-70">▾</span>
             </button>
-
             <div
                 className={`
                     absolute left-1/2 -translate-x-1/2 mt-3 w-32
@@ -149,14 +147,12 @@ const Header = () => {
                     <img className="my-2 h-16 w-auto" src={logo} alt="Olympiacos FC Stats Logo" />
                 </Link>
 
-                {/* Desktop nav */}
                 <nav className="hidden lg:flex flex-1 justify-center">
                     <ul className="flex items-center space-x-8 text-white font-semibold text-lg">
                         {navItems}
                     </ul>
                 </nav>
 
-                {/* Profile + Logout + Burger */}
                 <div className="flex items-center space-x-4">
                     <Link
                         to="/profile"

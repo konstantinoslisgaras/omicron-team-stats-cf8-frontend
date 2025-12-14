@@ -156,8 +156,6 @@ const RegisterCard: React.FC<RegisterCardProps> = ({ onRegister, loading, error 
                     <input type="date" name="dateOfBirth" value={form.dateOfBirth} onChange={handleChange} max={new Date().toISOString().split("T")[0]} className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-oly-red focus:border-transparent" />
                 </div>
                 <InputField name="favoriteLegend" label="Favorite Legend (Optional)" placeholder="Enter favorite legend..." value={form.favoriteLegend} onChange={handleChange} />
-
-                {/* Gender */}
                 <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Gender {requiredFields.includes("genderType") && <span className="text-red-500 ml-1">*</span>}</label>
                     <div className="grid grid-cols-2 gap-2">
@@ -169,8 +167,6 @@ const RegisterCard: React.FC<RegisterCardProps> = ({ onRegister, loading, error 
                         ))}
                     </div>
                 </div>
-
-                {/* Favorite Team */}
                 <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Favorite Team {requiredFields.includes("olympiacosFan") && <span className="text-red-500 ml-1">*</span>}</label>
                     <div className="grid grid-cols-2 gap-2">

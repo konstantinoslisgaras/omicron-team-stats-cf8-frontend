@@ -41,7 +41,8 @@ export const registerSchema = z.object({
         .string({ message: "Please enter a valid email address (must include a '@' and a domain end)." })
         .max(100, { message: "Email cannot exceed 100 characters." }),
 
-    dateOfBirth: z.string()
+    dateOfBirth: z
+        .string()
         .refine((val) => {
             if (!val) return true;
             const date = new Date(val);

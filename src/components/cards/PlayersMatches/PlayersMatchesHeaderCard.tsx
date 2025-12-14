@@ -15,7 +15,6 @@ const PlayersMatchesHeaderCard = ({ matchData }: PlayersMatchesHeaderProps) => {
     const rightScore = isOlympiacosHome ? matchData.opponentGoals : matchData.olympiacosGoals;
     const rightColor = isOlympiacosHome ? "text-slate-700" : "text-oly-red";
 
-    // Determine result color
     const getResultColor = () => {
         if (matchData.result?.toLowerCase().includes('win')) return 'bg-green-500';
         if (matchData.result?.toLowerCase().includes('draw')) return 'bg-yellow-500';
@@ -27,7 +26,8 @@ const PlayersMatchesHeaderCard = ({ matchData }: PlayersMatchesHeaderProps) => {
     return (
         <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 mb-6">
             <div className="flex items-center justify-between gap-6">
-                {/* Left Team (Home) */}
+
+                {/* Left Team */}
                 <div className="text-center flex-1">
                     <h1 className={`text-2xl font-bold truncate ${leftColor}`}>
                         {leftTeam}
@@ -37,7 +37,6 @@ const PlayersMatchesHeaderCard = ({ matchData }: PlayersMatchesHeaderProps) => {
                     </div>
                 </div>
 
-                {/* Score Separator */}
                 <div className="flex flex-col items-center">
                     <div className="text-2xl text-slate-500 font-bold">VS</div>
                     <div className={`text-white px-4 py-2 rounded-lg ${resultColor} mt-2`}>
@@ -47,7 +46,7 @@ const PlayersMatchesHeaderCard = ({ matchData }: PlayersMatchesHeaderProps) => {
                     </div>
                 </div>
 
-                {/* Right Team (Away) */}
+                {/* Right Team */}
                 <div className="text-center flex-1">
                     <h2 className={`text-2xl font-bold truncate ${rightColor}`}>
                         {rightTeam}

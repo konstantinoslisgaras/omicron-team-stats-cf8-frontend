@@ -4,7 +4,7 @@ import type { PlayerProps, CoachProps } from "../../../types/types.ts";
 import PlayerCard from "../../cards/Players/PlayerCard.tsx";
 import CoachCard from "../../cards/Coach/CoachCard.tsx";
 import axiosClient from "../../../api/axiosClient.ts";
-import {useScrollMemory} from "../../../hooks/useScrollMemory.ts";
+import { useScrollMemory } from "../../../hooks/useScrollMemory.ts";
 
 interface FullTeamData {
     players: PlayerProps[];
@@ -45,19 +45,21 @@ const FullTeamPage =() => {
                 <h1 className="text-2xl font-bold text-center text-oly-red-dark mb-8">
                     Olympiacos FC Full Team
                 </h1>
+
                 {/* Players */}
                 {Object.entries(positionGroups).map(([genericPosition, players]) => (
                     <div key={genericPosition} className="mb-10">
                         <h2 className="text-xl font-bold text-gray-900 mb-4 border-b-2 border-oly-red-dark pb-1">
                             {genericPosition}
                         </h2>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
                             {players.map((player) => (
                                 <PlayerCard key={player.id} player={player} />
                             ))}
                         </div>
                     </div>
                 ))}
+
                 {/* Coach */}
                 <div className="mb-12">
                     <h2 className="text-xl font-bold text-gray-900 mb-4 border-b-2 border-oly-red-dark pb-1">

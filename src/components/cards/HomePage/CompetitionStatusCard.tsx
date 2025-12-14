@@ -27,15 +27,11 @@ const CompetitionsStatusCard = ({ competitions }: CompetitionsStatusProps) => {
                             key={comp.id}
                             className="flex justify-between items-center bg-white border border-gray-200 shadow-lg hover:shadow-xl transition-all rounded-2xl p-5"
                         >
-                            {/* LEFT SIDE */}
                             <div className="flex flex-col justify-center">
-
-                                {/* Name + Participating */}
                                 <div className="flex items-center gap-2">
                                     <p className="font-semibold text-gray-900 text-lg leading-tight">
                                         {comp.competitionName}
                                     </p>
-
                                     {comp.participating && (
                                         <span className="flex items-center gap-1 text-blue-700 text-xs font-semibold">
                                             <span className="w-2 h-2 rounded-full bg-blue-600"></span>
@@ -43,8 +39,6 @@ const CompetitionsStatusCard = ({ competitions }: CompetitionsStatusProps) => {
                                         </span>
                                     )}
                                 </div>
-
-                                {/* Position */}
                                 <div className="mt-2 text-sm text-gray-700 font-medium">
                                     <span className="flex items-center gap-1">
                                         <span className="text-gray-800">Position:</span>
@@ -54,8 +48,6 @@ const CompetitionsStatusCard = ({ competitions }: CompetitionsStatusProps) => {
                                     </span>
                                 </div>
                             </div>
-
-                            {/* RIGHT SIDE — POINTS */}
                             <div className="flex flex-col items-end justify-center">
                                 <span className="text-2xl font-bold text-oly-red-dark leading-none">
                                     {comp.competitionPoints}
@@ -66,7 +58,7 @@ const CompetitionsStatusCard = ({ competitions }: CompetitionsStatusProps) => {
                     ))
                 ) : (
                     <p className="text-gray-500 text-center py-4">
-                        Competition data coming soon...
+                        Competition data loading...
                     </p>
                 )}
             </div>

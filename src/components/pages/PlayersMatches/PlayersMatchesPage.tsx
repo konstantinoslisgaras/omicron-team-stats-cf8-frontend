@@ -46,14 +46,11 @@ const PlayersMatchesPage = () => {
 
     return (
         <div className="w-full min-h-screen bg-slate-50 p-4">
-            {/* Header */}
             <div className="max-w-7xl mx-auto">
                 <PlayersMatchesHeaderCard matchData={matchData} />
             </div>
 
-            {/* Layout */}
             <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-5 items-center lg:items-start text-center mb-12">
-                {/* Left column */}
                 <div className="lg:w-[30%] w-full space-y-5 flex flex-col items-center">
                     <PlayersMatchesInfoCard
                         description={matchData.description}
@@ -69,7 +66,6 @@ const PlayersMatchesPage = () => {
                     <PlayersMatchesTeamStatsCard stats={matchData.teamStatsDTO} />
                 </div>
 
-                {/* Right column */}
                 <div className="lg:w-[70%] w-full flex flex-col gap-5">
                     <PlayersMatchesPitchCard matchData={matchData} />
                     <PlayersMatchesSubstitutesCard substitutes={matchData.playerMatches.slice(11)} />

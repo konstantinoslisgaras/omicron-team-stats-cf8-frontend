@@ -24,7 +24,6 @@ const TeamStatsPage =() => {
         };
 
         if (teamStatsId) {
-            // noinspection JSIgnoredPromiseFromCall
             fetchStats();
         }
     }, [teamStatsId]);

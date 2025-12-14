@@ -1,14 +1,5 @@
 import { Card, CardHeader, CardContent } from '../../ui/card.tsx';
-import {
-    Trophy,
-    Footprints,
-    Clock,
-    Calendar,
-    ChevronRight,
-    Volleyball,
-    TicketSlash,
-    TicketX, Sigma
-} from 'lucide-react';
+import { Trophy, Footprints, Clock, Calendar, ChevronRight, Volleyball, TicketSlash, TicketX, Sigma } from 'lucide-react';
 import * as React from 'react';
 
 interface PlayerStat {
@@ -130,7 +121,7 @@ const StatLeadersCard: React.FC<StatLeaderCardProps> = ({ title, leaders, statKe
             <div
                 className={`relative w-full h-full transition-transform duration-500 preserve-3d ${isFlipped ? 'rotate-y-180' : ''}`}
             >
-                {/* Front */}
+                {/* Front Side */}
                 <div className="absolute inset-0 backface-hidden">
                     <Card className="w-full h-full bg-white/90 shadow-lg hover:shadow-xl transition-all rounded-2xl border border-gray-200">
                         <CardHeader className="bg-gradient-to-r from-oly-red-dark to-oly-red text-white rounded-t-2xl py-3 text-center">
@@ -142,7 +133,7 @@ const StatLeadersCard: React.FC<StatLeaderCardProps> = ({ title, leaders, statKe
                     </Card>
                 </div>
 
-                {/* Back */}
+                {/* Back Side */}
                 <div className="absolute inset-0 backface-hidden rotate-y-180">
                     <Card className="w-full h-full bg-white/90 shadow-lg hover:shadow-xl transition-all rounded-2xl border border-gray-200">
                         <CardHeader className="bg-gradient-to-r from-oly-red to-oly-red-dark text-white rounded-t-2xl py-3 text-center">

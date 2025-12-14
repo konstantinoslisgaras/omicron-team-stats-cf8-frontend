@@ -18,6 +18,7 @@ const CompetitionCard = ({ competition }: CompetitionCardProps) => {
             </CardHeader>
 
             <CardContent className="p-6 space-y-6 text-gray-800">
+
                 {/* Competition Info Section */}
                 <div className="space-y-3">
                     <div className="flex items-center gap-2">
@@ -60,7 +61,7 @@ const CompetitionCard = ({ competition }: CompetitionCardProps) => {
                     </span>
                 </div>
 
-                {/* Live Position + Points */}
+                {/* Live Position & Points */}
                 {participating && (
                     <div className="flex justify-between items-center pt-2">
                         <div className="flex items-center gap-2">

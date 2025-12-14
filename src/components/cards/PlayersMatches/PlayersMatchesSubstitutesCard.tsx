@@ -9,7 +9,6 @@ const PlayersMatchesSubstitutesCard = ({ substitutes }: SubstitutesRowProps) => 
 
     return (
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 overflow-x-auto mb-20">
-            {/* Header */}
             <h2 className="text-base font-semibold text-center uppercase tracking-wide mb-4 pb-2 border-b border-gray-200 text-[color:var(--color-oly-red)]">
                 Substitutes
             </h2>
@@ -18,23 +17,18 @@ const PlayersMatchesSubstitutesCard = ({ substitutes }: SubstitutesRowProps) => 
                 {substitutes.map((p) => {
                     const stats: string[] = [];
 
-                    // Minutes played (styled stronger)
                     if (p.minutesPlayed > 0) {
                         stats.push(`⏱️ ${p.minutesPlayed}'`);
                     }
-
                     if (p.goals > 0) {
                         stats.push(`⚽${p.goals > 1 ? `×${p.goals}` : ''}`);
                     }
-
                     if (p.assists > 0) {
                         stats.push(`👟${p.assists > 1 ? `×${p.assists}` : ''}`);
                     }
-
                     if (p.yellowCards > 0) {
                         stats.push(`🟨${p.yellowCards > 1 ? `×${p.yellowCards}` : ''}`);
                     }
-
                     if (p.redCards > 0) {
                         stats.push(`🟥`);
                     }
@@ -44,7 +38,6 @@ const PlayersMatchesSubstitutesCard = ({ substitutes }: SubstitutesRowProps) => 
                             key={p.id}
                             className="flex flex-col items-center justify-center bg-gray-50 border border-gray-200 rounded-lg shadow-xs py-2 px-3 min-w-[85px] hover:shadow-md transition-all"
                         >
-                            {/* Number bubble improved */}
                             <div
                                 className="w-8 h-8 rounded-full flex items-center justify-center
                                            text-xs font-bold mb-1 shadow-sm
@@ -66,7 +59,6 @@ const PlayersMatchesSubstitutesCard = ({ substitutes }: SubstitutesRowProps) => 
                                         {stats[0]}
                                     </span>
 
-                                    {/* rest of stats */}
                                     {stats.slice(1).length > 0 && (
                                         <span className="text-gray-500">
                                             {' ' + stats.slice(1).join(' ')}

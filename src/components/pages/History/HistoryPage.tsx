@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import type { HistoryProps } from "../../../types/types.ts";
 import HistoryCard from "../../cards/History/HistoryCard.tsx";
 import axiosClient from "../../../api/axiosClient.ts";

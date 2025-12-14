@@ -69,6 +69,7 @@ const HomePage = () => {
                 Olympiacos FC Stats Dashboard
             </h1>
 
+            {/* Previous Match */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
                 {info.previousMatch && (
                     <div className="flex flex-col items-center lg:items-start">
@@ -76,23 +77,27 @@ const HomePage = () => {
                             Latest Match
                         </span>
                         <MatchBasicCard match={info.previousMatch} />
+                        {/* Streak Calculator */}
                         {info.currentStreak && <CurrentStreak currentStreak={info.currentStreak} />}
                     </div>
                 )}
 
                 <CompetitionsStatusCard competitions={info.competitionsStatus} />
 
+                {/* Next Match */}
                 {info.nextMatch && (
                     <div className="flex flex-col items-center lg:items-end">
                         <span className="px-5 py-2 bg-oly-red-dark text-white font-semibold rounded-full mb-4 shadow text-sm uppercase tracking-wide">
                             Next Match
                         </span>
                         <MatchBasicCard match={info.nextMatch} />
+                        {/* Countdown Timer */}
                         <CountdownTimer eventDate={`${info.nextMatch.date} ${info.nextMatch.time}`} />
                     </div>
                 )}
             </div>
 
+            {/* Stat Leaders */}
             <div className="bg-gray-50 py-8 px-6 rounded-3xl shadow-inner">
                 <h2 className="text-2xl font-bold text-oly-red-dark text-center mb-8">
                     Stat Leaders
@@ -125,50 +130,29 @@ const HomePage = () => {
                 </div>
             </div>
 
-            {/* Fans */}
+            {/* Players with the most fans */}
             {info.top10Fans && info.top10Fans.length > 0 && (
                 <div className="bg-white py-10 px-6 rounded-3xl shadow">
                     <h2 className="text-2xl font-bold text-oly-red-dark text-center mb-10">
                         Top 10 Most Supported Players
                     </h2>
-                    <div className="space-y-10">
-                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
-                            {info.top10Fans.slice(0, 5).map((p, idx) => (
-                                <div
-                                    key={p.id}
-                                    className="flex flex-col items-center bg-gray-50 shadow-inner p-4 rounded-xl border border-gray-200"
-                                >
-                                    <span className="text-sm font-semibold text-oly-red-dark mb-2">
-                                        #{idx + 1}
-                                    </span>
-                                    <span className="text-lg font-bold text-gray-900 tracking-wide">
-                                        {p.name}
-                                    </span>
-                                    <span className="text-sm text-gray-700 font-medium mt-1">
-                                        Fans: {p.fans}
-                                    </span>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
-                            {info.top10Fans.slice(5, 10).map((p, idx) => (
-                                <div
-                                    key={p.id}
-                                    className="flex flex-col items-center bg-gray-50 shadow-inner p-4 rounded-xl border border-gray-200"
-                                >
-                                    <span className="text-sm font-semibold text-oly-red-dark mb-2">
-                                        #{idx + 6}
-                                    </span>
-                                    <span className="text-lg font-bold text-gray-900 tracking-wide">
-                                        {p.name}
-                                    </span>
-                                    <span className="text-sm text-gray-700 font-medium mt-1">
-                                        Fans: {p.fans}
-                                    </span>
-                                </div>
-                            ))}
-                        </div>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+                        {info.top10Fans.map((p, idx) => (
+                            <div
+                                key={p.id}
+                                className="flex flex-col items-center bg-gray-50 shadow-inner p-4 rounded-xl border border-gray-200"
+                            >
+                                <span className="text-sm font-semibold text-oly-red-dark mb-2">
+                                    #{idx + 1}
+                                </span>
+                                <span className="text-base sm:text-lg font-bold text-gray-900 text-center">
+                                    {p.name}
+                                </span>
+                                <span className="text-sm text-gray-700 font-medium mt-1">
+                                    Fans: {p.fans}
+                                </span>
+                            </div>
+                        ))}
                     </div>
                 </div>
             )}

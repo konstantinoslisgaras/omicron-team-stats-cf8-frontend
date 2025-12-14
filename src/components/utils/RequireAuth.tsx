@@ -5,7 +5,7 @@ import { AuthContext } from "../../context/AuthContext";
 const RequireAuth = ({ children }: { children: React.ReactNode }) => {
     const auth = useContext(AuthContext)!;
 
-    if (auth.loading) return null; // wait until context finishes hydrating
+    if (auth.loading) return null;
 
     if (!auth.isAuthenticated) return <Navigate to="/login" replace />;
 

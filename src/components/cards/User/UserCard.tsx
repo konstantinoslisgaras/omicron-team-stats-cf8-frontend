@@ -1,31 +1,9 @@
-import {
-    User,
-    Mail,
-    Calendar,
-    UserCog,
-    Trophy,
-    ShieldX,
-    Star,
-    Heart,
-    CheckCircle,
-    XCircle
-} from "lucide-react";
+import { User, Mail, Calendar, UserCog, Trophy, ShieldX, Star, Heart, CheckCircle, XCircle } from "lucide-react";
 import type { UserCardProps } from "../../../types/types.ts";
 
 const UserCard = ({
-                      id,
-                      firstname,
-                      lastname,
-                      email,
-                      dateOfBirth,
-                      genderType,
-                      favoriteLegend,
-                      supportedPlayerName,
-                      role,
-                      active,
-                      olympiacosFan,
-                      memberSince,
-                  }: UserCardProps) => {
+                      id, firstname, lastname, email, dateOfBirth, genderType, favoriteLegend, supportedPlayerName,
+                      role, active, olympiacosFan, memberSince }: UserCardProps) => {
     const age = dateOfBirth
         ? new Date().getFullYear() - new Date(dateOfBirth).getFullYear()
         : null;
@@ -60,9 +38,7 @@ const UserCard = ({
                         <div className="w-24 h-24 rounded-full bg-white/20 border-4 border-white/30 flex items-center justify-center mb-4 backdrop-blur-sm">
                             <User className="w-12 h-12 text-white" />
                         </div>
-
                         <h1 className="text-3xl font-bold">{firstname} {lastname}</h1>
-
                         <div className="mt-4 flex gap-3">
                             <span className="px-5 py-1 rounded-full bg-yellow-500 text-white text-sm font-semibold shadow-sm">
                                 {role === "SUPER_ADMIN" ? "Admin" : "User"}
@@ -89,8 +65,8 @@ const UserCard = ({
                             </div>
                             <h2 className="text-xl font-semibold text-gray-800">Personal Info</h2>
                         </div>
-
                         <div className="space-y-5">
+
                             {/* ID */}
                             {id && (
                                 <div className="flex items-center gap-3">

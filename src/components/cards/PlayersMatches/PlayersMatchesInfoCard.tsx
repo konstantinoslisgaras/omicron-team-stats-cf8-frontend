@@ -1,14 +1,6 @@
 import * as React from "react";
 import { Card, CardHeader, CardContent } from "../../ui/card.tsx";
-import {
-    Calendar,
-    Clock,
-    Trophy,
-    CalendarDays,
-    Award,
-    Target,
-    Building
-} from "lucide-react";
+import { Calendar, Clock, Trophy, CalendarDays, Award, Target, Building } from "lucide-react";
 
 interface PlayerMatchesInfoCardProps {
     competition: string;
@@ -22,34 +14,23 @@ interface PlayerMatchesInfoCardProps {
     description?: string;
 }
 
-const PlayersMatchesInfoCard: React.FC<PlayerMatchesInfoCardProps> = ({
-                                                                          competition,
-                                                                          season,
-                                                                          ground,
-                                                                          date,
-                                                                          time,
-                                                                          day,
-                                                                          matchNumber,
-                                                                          coachName,
-                                                                          description
-                                                                      }) => {
+const PlayersMatchesInfoCard: React.FC<PlayerMatchesInfoCardProps> =
+    ({ competition, season, ground, date, time, day, matchNumber, coachName, description }) => {
+
     return (
         <Card className="w-full max-w-lg bg-white shadow-xl rounded-2xl border border-gray-200 mx-auto overflow-hidden">
-            {/* HEADER */}
             <CardHeader className="bg-gradient-to-r from-oly-red-dark to-oly-red text-white rounded-t-2xl py-5 text-center shadow-sm">
                 <h2 className="text-xl font-bold tracking-wide">Match Information</h2>
             </CardHeader>
 
             <CardContent className="p-6 space-y-5">
 
-                {/* DESCRIPTION */}
                 {description && (
                     <p className="text-sm font-semibold text-gray-800 bg-gray-50 border border-gray-200 rounded-xl p-3 text-center shadow-sm">
                         {description}
                     </p>
                 )}
 
-                {/* DATE & TIME */}
                 <div className="grid grid-cols-2 gap-4">
                     <div className="p-4 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-all">
                         <div className="flex items-center gap-2 mb-2">
@@ -69,7 +50,6 @@ const PlayersMatchesInfoCard: React.FC<PlayerMatchesInfoCardProps> = ({
                     </div>
                 </div>
 
-                {/* MATCH NUMBER & GROUND */}
                 <div className="grid grid-cols-2 gap-4">
                     {matchNumber && (
                         <div className="p-4 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-all">
@@ -92,7 +72,6 @@ const PlayersMatchesInfoCard: React.FC<PlayerMatchesInfoCardProps> = ({
                     </div>
                 </div>
 
-                {/* COMPETITION & SEASON */}
                 <div className="grid grid-cols-2 gap-4">
                     <div className="p-4 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-all">
                         <div className="flex items-center gap-2 mb-2">
@@ -111,7 +90,6 @@ const PlayersMatchesInfoCard: React.FC<PlayerMatchesInfoCardProps> = ({
                     </div>
                 </div>
 
-                {/* COACH - STANDS OUT MORE */}
                 {coachName && (
                     <div className="p-5 bg-gradient-to-r from-slate-50 to-gray-100 border-2 border-oly-red/20 rounded-xl shadow-md hover:shadow-lg transition-all">
                         <div className="flex items-center gap-3 mb-3">
@@ -123,7 +101,6 @@ const PlayersMatchesInfoCard: React.FC<PlayerMatchesInfoCardProps> = ({
                         </p>
                     </div>
                 )}
-
             </CardContent>
         </Card>
     );

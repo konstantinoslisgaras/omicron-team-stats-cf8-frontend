@@ -1,9 +1,9 @@
 import { Card, CardHeader, CardContent } from '../../ui/card.tsx';
 import type { CoachProps } from "../../../types/types.ts";
 import * as React from "react";
-import {Button} from "../../ui/button.tsx";
-import {BarChart3, Book, Flag, PersonStanding, User} from "lucide-react";
-import {useNavigate} from "react-router";
+import { Button } from "../../ui/button.tsx";
+import { BarChart3, Book, Flag, PersonStanding, User } from "lucide-react";
+import { useNavigate } from "react-router";
 
 interface CoachCardProps {
     coach: CoachProps;

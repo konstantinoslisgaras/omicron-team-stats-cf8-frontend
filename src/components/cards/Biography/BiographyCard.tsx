@@ -43,7 +43,6 @@ const BiographyCard = ({ bio }: BiographyCardProps) => {
                 </div>
             </CardContent>
         </Card>
-
     );
 };
 

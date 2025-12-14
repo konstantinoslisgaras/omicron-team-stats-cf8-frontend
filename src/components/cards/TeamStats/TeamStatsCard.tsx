@@ -1,11 +1,6 @@
 import { Card, CardHeader, CardContent } from '../../ui/card.tsx';
 import type { TeamStatsProps } from "../../../types/types.ts";
-import {
-    Trophy,
-    ShieldX,
-    Scale,
-    XCircle, Volleyball, Footprints, TicketSlash, TicketX, ClipboardCheck
-} from "lucide-react";
+import { Trophy, ShieldX, Scale, XCircle, Volleyball, Footprints, TicketSlash, TicketX, ClipboardCheck } from "lucide-react";
 import * as React from "react";
 
 interface TeamStatsCardProps {
@@ -24,11 +19,13 @@ const TeamStatsCard: React.FC<TeamStatsCardProps> = ({ teamStats }) => {
                 </CardHeader>
 
                 <CardContent className="p-6">
-                    {/* Area 1: Basic Stats */}
+
+                    {/* Basic Stats */}
                     <div className="mb-8">
                         <h2 className="text-xl font-bold text-gray-800 mb-4 text-center border-b border-gray-200 pb-2">
                             Total Stats
                         </h2>
+
                         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-3 gap-5">
                             {/* Results Stats */}
                             <div className="flex flex-col items-center justify-center p-4 rounded-xl border border-gray-100 bg-white shadow-sm hover:shadow-md hover:bg-gray-50 transition-all">
@@ -97,7 +94,7 @@ const TeamStatsCard: React.FC<TeamStatsCardProps> = ({ teamStats }) => {
                                 <div className="text-xs text-gray-500">Red Cards</div>
                             </div>
 
-                            {/*Total Matches*/}
+                            {/* Total Matches */}
                             <div className="flex flex-col items-center justify-center p-4 rounded-xl border border-gray-100 bg-white shadow-sm hover:shadow-md hover:bg-gray-50 transition-all">
                                 <div className="mb-3">
                                     <ClipboardCheck className="w-7 h-7 text-blue-600" />
@@ -108,12 +105,11 @@ const TeamStatsCard: React.FC<TeamStatsCardProps> = ({ teamStats }) => {
                         </div>
                     </div>
 
-                    {/* Divider */}
                     <div className="flex items-center justify-center mb-8">
                         <div className="w-1/2 h-1 bg-gradient-to-r from-transparent via-gray-300 to-transparent rounded-full"></div>
                     </div>
 
-                    {/* Area 2: Advanced Ratios & Averages */}
+                    {/* Advanced Ratios & Averages */}
                     <div>
                         <h2 className="text-xl font-bold text-gray-800 mb-4 text-center border-b border-gray-200 pb-2">
                             Stat Ratios & Averages
