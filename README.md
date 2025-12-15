@@ -51,6 +51,24 @@ cd frontend && npm install && npm run dev
 
 ---
 
+# 🛡️ Authentication
+
+## User Dashboard (Logged-in Users)
+Personalized experience for registered supporters.
+
+👨‍💼 Create profile
+📇 View profile
+🖊️ Edit profile
+❤️ Favorite player
+
+## 🔐 Super Admin Dashboard
+
+📋 View paginated profiles list
+👁️ View any user profile
+🖊️ Edit Competition Position
+
+---
+
 # 🌐 Website Structure & Navigation
 - ├── 📁 Login
 - ├── 📁 Register
@@ -69,3 +87,7 @@ cd frontend && npm install && npm run dev
 
 # 📄 License
 Distributed under the MIT License.
+
+---
+
+### 📧 konstantinoslisgaras@gmail.com
